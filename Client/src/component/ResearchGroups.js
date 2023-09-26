@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import AdminSideNavBar from "./AdminSideNavBar";
 import PanelAssignModal from "./PanelAssignModal";
+import { headers } from "./ApiHeader";
 
 const ResearchGroups = () => {
   const [groups, setGroup] = useState([]);
@@ -13,7 +14,9 @@ const ResearchGroups = () => {
   useEffect(() => {
     const getGroups = () => {
       axios
-        .get("http://localhost:5000/group")
+        .get("http://localhost:5000/group", {
+          headers: headers,
+        })
         .then((res) => {
           setGroup(res.data);
         })
@@ -61,9 +64,9 @@ const ResearchGroups = () => {
                   <td>{group.leaderName}</td>
                   <td>{group.contactNo}</td>
                   <td>{group.email}</td>
-                  <td>{group.member2ID}</td>                  
-                  <td>{group.member3ID}</td>                 
-                  <td>{group.member4ID}</td>                 
+                  <td>{group.member2ID}</td>
+                  <td>{group.member3ID}</td>
+                  <td>{group.member4ID}</td>
                   <td>
                     {" "}
                     <Button

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import { headers } from "./ApiHeader";
 
 const SubmitedTopics = () => {
   const [submissions, setSubmissions] = useState([]);
@@ -10,7 +11,9 @@ const SubmitedTopics = () => {
   useEffect(() => {
     const getSubmissions = () => {
       axios
-        .get("http://localhost:5000/submission")
+        .get("http://localhost:5000/submission", {
+          headers: headers,
+        })
         .then((res) => {
           setSubmissions(res.data);
         })

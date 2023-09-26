@@ -4,6 +4,7 @@ import Table from "react-bootstrap/Table";
 import axios from "axios";
 import Badge from "react-bootstrap/Badge";
 import StudentSideNavBar from "./StudentSideNavBar";
+import { headers } from "./ApiHeader";
 
 const TopicApprovalStudent = () => {
   const [topics, setTopic] = useState([]);
@@ -11,7 +12,9 @@ const TopicApprovalStudent = () => {
   useEffect(() => {
     const getTopics = () => {
       axios
-        .get("http://localhost:5000/topic")
+        .get("http://localhost:5000/topic", {
+          headers: headers,
+        })
         .then((res) => {
           setTopic(res.data);
         })
