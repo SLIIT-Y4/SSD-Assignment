@@ -46,7 +46,7 @@ const CreateStudentGroups = () => {
       event.stopPropagation();
     } else {
       axios
-        .post("http://localhost:5000/group/register", newGroup)
+        .post("https://localhost:5000/group/register", newGroup)
         .then(() => swal("Success!", "Details Submitted Successfully!", "success"),
         )
         .catch((err) => swal("Failed!", "Something Went Wrong!", "error"));

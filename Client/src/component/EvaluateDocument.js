@@ -14,7 +14,7 @@ const EvaluateDocument = () => {
   useEffect(() => {
     const getDocumentMarkings = () => {
       axios
-        .get("http://localhost:5000/documentmarking")
+        .get("https://localhost:5000/documentmarking")
         .then((res) => {
           SetDocumentMarkings(res.data);
         })

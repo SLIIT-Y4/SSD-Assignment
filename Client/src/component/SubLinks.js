@@ -12,7 +12,7 @@ const SubLinks = () => {
   useEffect(() => {
     const getAllSubTypes = () => {
       axios
-        .get("http://localhost:5000/subtype")
+        .get("https://localhost:5000/subtype")
         .then((res) => {
           setLinks(res.data);
         })

@@ -27,7 +27,7 @@ const UserLogin = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.get(`http://localhost:5000/login/${email}`).then((res) => {
+    axios.get(`https://localhost:5000/login/${email}`).then((res) => {
       if (res.data.data != null) {
         let hashPass = res.data.data.password;
         console.log(password);

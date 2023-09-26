@@ -34,7 +34,7 @@ const StudentSub = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:5000/submission";
+      const url = "https://localhost:5000/submission";
       const { data: res } = await axios.post(url, sdata);
       swal("Success!", "Uploaded Successfully!", "success"),
         navigate("/sublinks");

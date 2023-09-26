@@ -56,7 +56,7 @@ const CreateMarkingScheme = () => {
       if (type === "Document Evaluation") {
         axios
           .post(
-            "http://localhost:5000/documentmarking/create",
+            "https://localhost:5000/documentmarking/create",
             newMarkingScheme
           )
           .then(
@@ -68,7 +68,7 @@ const CreateMarkingScheme = () => {
       } else {
         axios
           .post(
-            "http://localhost:5000/presentationmarking/create",
+            "https://localhost:5000/presentationmarking/create",
             newMarkingScheme
           )
           .then(

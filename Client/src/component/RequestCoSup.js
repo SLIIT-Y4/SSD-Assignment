@@ -29,7 +29,7 @@ const RequestCoSup = () => {
       event.stopPropagation();
     } else {
       axios
-        .post("http://localhost:5000/cosup/request", newCoSupRequest)
+        .post("https://localhost:5000/cosup/request", newCoSupRequest)
         .then(() => swal("Success!", "Request Sent Successfully!", "success"))
         .catch((err) => swal("Failed!", "Something Went Wrong!", "error"));
     }

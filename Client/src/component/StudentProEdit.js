@@ -29,7 +29,7 @@ const StudentProEdit = ({ det }) => {
       event.stopPropagation();
     } else {
       axios
-        .put(`http://localhost:5000/student/update/${det._id}`, updateStudent)
+        .put(`https://localhost:5000/student/update/${det._id}`, updateStudent)
         .then(
           (data) => console.log(data),
           swal("Updated!", "Successfully Updated", "success")

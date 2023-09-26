@@ -38,13 +38,13 @@ const SubTypes = ({ upd }) => {
     } else {
       if (upd == null) {
         axios
-          .post("http://localhost:5000/subtype/add", newSubType)
+          .post("https://localhost:5000/subtype/add", newSubType)
           .then(() => alert("You posted a link"))
           .catch((err) => alert(err));
         console.log(newSubType);
       } else {
         axios
-          .put(`http://localhost:5000/subtype/update/${upd._id}`, newSubType)
+          .put(`https://localhost:5000/subtype/update/${upd._id}`, newSubType)
           .then(() => alert("Link is Updated"))
           .catch((err) => alert(err));
       }

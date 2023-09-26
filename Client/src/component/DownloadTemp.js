@@ -14,7 +14,7 @@ const DownloadTemp = () => {
   useEffect(() => {
     const getAllUpDocs = () => {
       axios
-        .get("http://localhost:5000/uploadDoc")
+        .get("https://localhost:5000/uploadDoc")
         .then((res) => {
           setTemps(res.data);
         })

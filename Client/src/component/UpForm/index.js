@@ -26,7 +26,7 @@ const UpForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:5000/uploadDoc";
+      const url = "https://localhost:5000/uploadDoc";
       const { data: res } = await axios.post(url, data);
       swal("Success!", "uploaded Successfully!", "success"),
         navigate("/uploadtemp");

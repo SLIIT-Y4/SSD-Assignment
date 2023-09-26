@@ -14,7 +14,7 @@ const AcceptRejectTopic = () => {
   useEffect(() => {
     const getTopics = () => {
       axios
-        .get("http://localhost:5000/topic")
+        .get("https://localhost:5000/topic")
         .then((res) => {
           setTopic(res.data);
         })
@@ -32,7 +32,7 @@ const AcceptRejectTopic = () => {
       };
 
       axios
-        .put(`http://localhost:5000/topic/update/${id}`, updateStatus)
+        .put(`https://localhost:5000/topic/update/${id}`, updateStatus)
         .then(() => navigate("/viewtopics"))
         .catch((err) => alert(err));
     } else if (val == 2) {
@@ -41,7 +41,7 @@ const AcceptRejectTopic = () => {
       };
 
       axios
-        .put(`http://localhost:5000/topic/update/${id}`, updateStatus)
+        .put(`https://localhost:5000/topic/update/${id}`, updateStatus)
         .then(() => navigate("/viewtopics"))
         .catch((err) => alert(err));
     } else {
@@ -50,7 +50,7 @@ const AcceptRejectTopic = () => {
       };
 
       axios
-        .put(`http://localhost:5000/topic/update/${id}`, updateStatus)
+        .put(`https://localhost:5000/topic/update/${id}`, updateStatus)
         .then(() => navigate("/viewtopics"))
         .catch((err) => alert(err));
     }

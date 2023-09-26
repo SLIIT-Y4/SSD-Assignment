@@ -19,7 +19,7 @@ const AdminStaffView = () => {
   useEffect(() => {
     const getAdminStaffViews = () => {
       axios
-        .get("http://localhost:5000/staff")
+        .get("https://localhost:5000/staff")
         .then((res) => {
           setAdminStaffView(res.data);
           console.log(res.data);

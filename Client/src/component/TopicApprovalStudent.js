@@ -11,7 +11,7 @@ const TopicApprovalStudent = () => {
   useEffect(() => {
     const getTopics = () => {
       axios
-        .get("http://localhost:5000/topic")
+        .get("https://localhost:5000/topic")
         .then((res) => {
           setTopic(res.data);
         })

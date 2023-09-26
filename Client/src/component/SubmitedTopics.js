@@ -10,7 +10,7 @@ const SubmitedTopics = () => {
   useEffect(() => {
     const getSubmissions = () => {
       axios
-        .get("http://localhost:5000/submission")
+        .get("https://localhost:5000/submission")
         .then((res) => {
           setSubmissions(res.data);
         })

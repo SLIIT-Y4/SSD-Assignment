@@ -13,7 +13,7 @@ const SupRequestsStaffView = () => {
   useEffect(() => {
     const getSupervisors = () => {
       axios
-        .get("http://localhost:5000/sup")
+        .get("https://localhost:5000/sup")
         .then((res) => {
           setSupervisor(res.data);
         })
@@ -31,7 +31,7 @@ const SupRequestsStaffView = () => {
       };
 
       axios
-        .put(`http://localhost:5000/sup/update/${id}`, updateStatus)
+        .put(`https://localhost:5000/sup/update/${id}`, updateStatus)
         .then(() => navigate("/supstaff"))
         .catch((err) => alert(err));
     } else if (val == 2) {
@@ -40,7 +40,7 @@ const SupRequestsStaffView = () => {
       };
 
       axios
-        .put(`http://localhost:5000/sup/update/${id}`, updateStatus)
+        .put(`https://localhost:5000/sup/update/${id}`, updateStatus)
         .then(() => navigate("/supstaff"))
         .catch((err) => alert(err));
     } else {
@@ -49,7 +49,7 @@ const SupRequestsStaffView = () => {
       };
 
       axios
-        .put(`http://localhost:5000/sup/update/${id}`, updateStatus)
+        .put(`https://localhost:5000/sup/update/${id}`, updateStatus)
         .then(() => navigate("/supstaff"))
         .catch((err) => alert(err));
     }

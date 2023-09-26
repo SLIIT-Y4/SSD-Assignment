@@ -20,7 +20,7 @@ const AdminStudentView = () => {
   useEffect(() => {
     const getAdminStudentViews = () => {
       axios
-        .get("http://localhost:5000/student")
+        .get("https://localhost:5000/student")
         .then((res) => {
           setAdminStudentView(res.data);
           console.log(res.data);

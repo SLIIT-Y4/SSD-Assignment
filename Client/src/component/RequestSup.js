@@ -28,7 +28,7 @@ const RequestSup = () => {
       event.stopPropagation();
     } else {
       axios
-        .post("http://localhost:5000/sup/request", newSupRequest)
+        .post("https://localhost:5000/sup/request", newSupRequest)
         .then(() => swal("Success!", "Request Sent Successfully!", "success"))
         .catch((err) => swal("Failed!", "Something Went Wrong!", "error"));
     }

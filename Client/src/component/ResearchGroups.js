@@ -13,7 +13,7 @@ const ResearchGroups = () => {
   useEffect(() => {
     const getGroups = () => {
       axios
-        .get("http://localhost:5000/group")
+        .get("https://localhost:5000/group")
         .then((res) => {
           setGroup(res.data);
         })

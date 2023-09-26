@@ -13,7 +13,7 @@ const CoSupRequestsStaffView = () => {
   useEffect(() => {
     const getCoSupervisors = () => {
       axios
-        .get("http://localhost:5000/cosup")
+        .get("https://localhost:5000/cosup")
         .then((res) => {
           setCoSupervisor(res.data);
         })
@@ -31,7 +31,7 @@ const CoSupRequestsStaffView = () => {
       };
 
       axios
-        .put(`http://localhost:5000/cosup/update/${id}`, updateStatus)
+        .put(`https://localhost:5000/cosup/update/${id}`, updateStatus)
         .then(() => navigate("/cosupstaff"))
         .catch((err) => alert(err));
     } else if (val == 2) {
@@ -40,7 +40,7 @@ const CoSupRequestsStaffView = () => {
       };
 
       axios
-        .put(`http://localhost:5000/cosup/update/${id}`, updateStatus)
+        .put(`https://localhost:5000/cosup/update/${id}`, updateStatus)
         .then(() => navigate("/cosupstaff"))
         .catch((err) => alert(err));
     } else {
@@ -49,7 +49,7 @@ const CoSupRequestsStaffView = () => {
       };
 
       axios
-        .put(`http://localhost:5000/cosup/update/${id}`, updateStatus)
+        .put(`https://localhost:5000/cosup/update/${id}`, updateStatus)
         .then(() => navigate("/cosupstaff"))
         .catch((err) => alert(err));
     }
