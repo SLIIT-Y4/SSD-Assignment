@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import StudentSideNavBar from "./StudentSideNavBar";
 import axios from "axios";
 import { Button } from "react-bootstrap";
+import { headers } from "./ApiHeader";
 
 const SubDoc = () => {
   const [links, setLinks] = useState([]);
@@ -15,7 +16,9 @@ const SubDoc = () => {
   useEffect(() => {
     const getAllSubTypes = () => {
       axios
-        .get(`http://localhost:5000/subtype/${params.id}`)
+        .get(`http://localhost:5000/subtype/${params.id}`, {
+          headers: headers,
+        })
         .then((res) => {
           setLinks(res.data.data);
           console.log(params.id);

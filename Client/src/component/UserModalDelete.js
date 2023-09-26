@@ -4,12 +4,15 @@ import { Button } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import { headers } from "./ApiHeader";
 
 const Modaldelete = (props) => {
   const opp = () => {
     if (props.type == "delete") {
       axios
-        .delete(`http://localhost:5000/staff/delete/${props.profile._id}`)
+        .delete(`http://localhost:5000/staff/delete/${props.profile._id}`, {
+          headers: headers,
+        })
         .then(() => {
           swal("Deleted!", "Successfully Deleted", "success");
           navigate("/UserLogin");
@@ -19,7 +22,9 @@ const Modaldelete = (props) => {
         });
 
       axios
-        .delete(`http://localhost:5000/student/delete/${props.profile._id}`)
+        .delete(`http://localhost:5000/student/delete/${props.profile._id}`, {
+          headers: headers,
+        })
         .then(() => {
           swal("Deleted!", "Successfully Deleted", "success");
           navigate("/UserLogin");
@@ -29,7 +34,9 @@ const Modaldelete = (props) => {
         });
 
       axios
-        .delete(`http://localhost:5000/Admin/delete/${props.profile._id}`)
+        .delete(`http://localhost:5000/Admin/delete/${props.profile._id}`, {
+          headers: headers,
+        })
         .then(() => {
           swal("Deleted!", "Successfully Deleted", "success");
           navigate("/UserLogin");

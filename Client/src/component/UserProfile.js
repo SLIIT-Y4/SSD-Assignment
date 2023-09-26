@@ -10,6 +10,7 @@ import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
 import Header from "./Header.js";
+import { headers } from "./ApiHeader.js";
 
 const UserProfile = () => {
   const navigate = useNavigate();
@@ -26,7 +27,9 @@ const UserProfile = () => {
   useEffect(() => {
     if (token.type == "Student") {
       axios
-        .get(`http://localhost:5000/student/students/${token.email}`)
+        .get(`http://localhost:5000/student/students/${token.email}`, {
+          headers: headers,
+        })
         .then((res) => {
           console.log(res.data.data);
           setProfiledetails(res.data.data);
@@ -36,7 +39,9 @@ const UserProfile = () => {
         });
     } else if (token.type == "Admin") {
       axios
-        .get(`http://localhost:5000/Admin/admins/${token.email}`)
+        .get(`http://localhost:5000/Admin/admins/${token.email}`, {
+          headers: headers,
+        })
         .then((res) => {
           console.log(res.data.data);
           setProfiledetails(res.data.data);
@@ -46,7 +51,9 @@ const UserProfile = () => {
         });
     } else {
       axios
-        .get(`http://localhost:5000/staff/staffs/${token.email}`)
+        .get(`http://localhost:5000/staff/staffs/${token.email}`, {
+          headers: headers,
+        })
         .then((res) => {
           console.log(res.data.data);
           setProfiledetails(res.data.data);

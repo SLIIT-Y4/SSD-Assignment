@@ -8,6 +8,7 @@ import ModleStudentDelete from "./AdminModalDelStudents";
 import AdminSideNavBar from "./AdminSideNavBar";
 import ModalnewStudent from "./AdminModalUpdStudent";
 import axios from "axios";
+import { headers } from "./ApiHeader";
 
 const AdminStudentView = () => {
   const [modalStuUpdate, setmodalStuUpdate] = React.useState(false);
@@ -20,7 +21,9 @@ const AdminStudentView = () => {
   useEffect(() => {
     const getAdminStudentViews = () => {
       axios
-        .get("http://localhost:5000/student")
+        .get("http://localhost:5000/student", {
+          headers: headers,
+        })
         .then((res) => {
           setAdminStudentView(res.data);
           console.log(res.data);

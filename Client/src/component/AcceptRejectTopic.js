@@ -7,6 +7,7 @@ import Badge from "react-bootstrap/Badge";
 import { useNavigate } from "react-router-dom";
 import PanelSideNavBar from "./PanelSideNavBar";
 import SubmitedTopics from "./SubmitedTopics";
+import { headers } from "./ApiHeader";
 
 const AcceptRejectTopic = () => {
   const [topics, setTopic] = useState([]);
@@ -14,7 +15,9 @@ const AcceptRejectTopic = () => {
   useEffect(() => {
     const getTopics = () => {
       axios
-        .get("http://localhost:5000/topic")
+        .get("http://localhost:5000/topic", {
+          headers: headers,
+        })
         .then((res) => {
           setTopic(res.data);
         })
@@ -32,7 +35,9 @@ const AcceptRejectTopic = () => {
       };
 
       axios
-        .put(`http://localhost:5000/topic/update/${id}`, updateStatus)
+        .put(`http://localhost:5000/topic/update/${id}`, updateStatus, {
+          headers: headers,
+        })
         .then(() => navigate("/viewtopics"))
         .catch((err) => alert(err));
     } else if (val == 2) {
@@ -41,7 +46,9 @@ const AcceptRejectTopic = () => {
       };
 
       axios
-        .put(`http://localhost:5000/topic/update/${id}`, updateStatus)
+        .put(`http://localhost:5000/topic/update/${id}`, updateStatus, {
+          headers: headers,
+        })
         .then(() => navigate("/viewtopics"))
         .catch((err) => alert(err));
     } else {
@@ -50,7 +57,9 @@ const AcceptRejectTopic = () => {
       };
 
       axios
-        .put(`http://localhost:5000/topic/update/${id}`, updateStatus)
+        .put(`http://localhost:5000/topic/update/${id}`, updateStatus, {
+          headers: headers,
+        })
         .then(() => navigate("/viewtopics"))
         .catch((err) => alert(err));
     }
@@ -136,12 +145,12 @@ const AcceptRejectTopic = () => {
           </Table>
         </div>
 
-        <hr style = {{color : "black", height: "3px"}} />
-          <div className="doctable"> 
-            <h4> Submitted Topic Details Documents</h4>
-            <br />
-            <SubmitedTopics />
-          </div> 
+        <hr style={{ color: "black", height: "3px" }} />
+        <div className="doctable">
+          <h4> Submitted Topic Details Documents</h4>
+          <br />
+          <SubmitedTopics />
+        </div>
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import StudentSideNavBar from "./StudentSideNavBar";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
+import { headers } from "./ApiHeader";
 
 const SubLinks = () => {
   const [links, setLinks] = useState([]);
@@ -12,7 +13,9 @@ const SubLinks = () => {
   useEffect(() => {
     const getAllSubTypes = () => {
       axios
-        .get("http://localhost:5000/subtype")
+        .get("http://localhost:5000/subtype", {
+          headers: headers,
+        })
         .then((res) => {
           setLinks(res.data);
         })
@@ -38,16 +41,18 @@ const SubLinks = () => {
           marginLeft: "200px",
         }}
       >
-        
-      <div className="cp7">
-        <Form>
-
-          <h3>Submission Links</h3><hr color="white"/><br/><br/>
+        <div className="cp7">
+          <Form>
+            <h3>Submission Links</h3>
+            <hr color="white" />
+            <br />
+            <br />
             {links.map((link) => (
               <Link to={`/subtypes/${link._id}`}>
                 <Button variant="link" key={link._id}>
                   {link.LinkName}
-                </Button><br/>
+                </Button>
+                <br />
               </Link>
             ))}
           </Form>
