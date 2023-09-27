@@ -62,7 +62,8 @@ const RegisterResearchTopic = () => {
             <Form.Group className="mb-3" controlId="gid">
               <Form.Label>Group ID</Form.Label>
               <Form.Control
-                placeholder="Group ID"
+                placeholder="Format: SD1234"
+                pattern="[A-Z]{2}\d{4}"
                 value={gid}
                 onChange={(e) => setGroupId(e.target.value)}
                 required
@@ -72,7 +73,8 @@ const RegisterResearchTopic = () => {
             <Form.Group className="mb-3" controlId="gname">
               <Form.Label>Group Name</Form.Label>
               <Form.Control
-                placeholder="Group Name"
+                placeholder="Maximum 5 words."
+                pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
                 value={gname}
                 onChange={(e) => setGroupName(e.target.value)}
                 required
@@ -83,6 +85,7 @@ const RegisterResearchTopic = () => {
               <Form.Label>Supervisor Name</Form.Label>
               <Form.Control
                 placeholder="Supervisor Name"
+                pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
                 value={supname}
                 onChange={(e) => setSupName(e.target.value)}
                 required
@@ -93,6 +96,7 @@ const RegisterResearchTopic = () => {
               <Form.Label>Co-supervisor Name</Form.Label>
               <Form.Control
                 placeholder="Co-supervisor Name"
+                pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
                 value={cosupname}
                 onChange={(e) => setCoSupName(e.target.value)}
                 required
@@ -103,6 +107,7 @@ const RegisterResearchTopic = () => {
               <Form.Label>Research Topic</Form.Label>
               <Form.Control
                 placeholder="Research Topic"
+                pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,10}$"
                 value={topic}
                 onChange={(e) => setResearchTopic(e.target.value)}
                 required

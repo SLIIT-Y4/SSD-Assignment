@@ -77,7 +77,7 @@ const CreateStudentGroups = () => {
                 <Form.Group className="mb-3" controlId="lid">
                   <Form.Label>Leader's Student ID</Form.Label>
                   <Form.Control
-                    placeholder="Leader's Student ID"
+                    placeholder="Format: IT12345678"
                     value={lid}
                     pattern="[A-Z]{2}\d{8}"
                     onChange={(e) => setLeaderID(e.target.value)}
@@ -90,7 +90,9 @@ const CreateStudentGroups = () => {
                 <Form.Group className="mb-3" controlId="lname">
                   <Form.Label>Leader's Name</Form.Label>
                   <Form.Control
-                    placeholder="Leader's Name"
+                    
+                    placeholder="Maximum 5 words."
+                      pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
                     value={lname}
                     onChange={(e) => setLeaderName(e.target.value)}
                     required
@@ -103,7 +105,7 @@ const CreateStudentGroups = () => {
               <Form.Label>Leader's Contact No.</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Leader's Contact No."
+                placeholder="Format: 0123456789"
                 pattern="[0-9]{10}"
                 value={number}
                 onChange={(e) => setContactNo(e.target.value)}
@@ -115,7 +117,7 @@ const CreateStudentGroups = () => {
               <Form.Label>Leader's Email</Form.Label>
               <Form.Control
                 pattern="[a-z]{2}\d{8}@my.sliit.lk"
-                placeholder="it12345678@my.sliit.lk"
+                placeholder="Format: it12345678@my.sliit.lk"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -128,7 +130,7 @@ const CreateStudentGroups = () => {
                   <Form.Label>Member 2 Student ID</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Member 2 Student ID"
+                    placeholder="Format: IT12345678"
                     value={m2id}
                     pattern="[A-Z]{2}\d{8}"
                     onChange={(e) => setMember2Id(e.target.value)}
@@ -142,7 +144,8 @@ const CreateStudentGroups = () => {
                   <Form.Label>Member 2 Name</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Member 2 Name"
+                    placeholder="Maximum 5 words."
+                      pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
                     value={m2name}
                     onChange={(e) => setMember2Name(e.target.value)}
                     required
@@ -157,7 +160,7 @@ const CreateStudentGroups = () => {
                   <Form.Label>Member 3 Student ID</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Member 3 Student ID"
+                    placeholder="Format: IT12345678"
                     value={m3id}
                     pattern="[A-Z]{2}\d{8}"
                     onChange={(e) => setMember3Id(e.target.value)}
@@ -171,7 +174,8 @@ const CreateStudentGroups = () => {
                   <Form.Label>Member 3 Name</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Member 3 Name"
+                    placeholder="Maximum 5 words."
+                      pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
                     value={m3name}
                     onChange={(e) => setMember3Name(e.target.value)}
                     required
@@ -186,7 +190,7 @@ const CreateStudentGroups = () => {
                   <Form.Label>Member 4 Student ID</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Member 4 Student ID"
+                    placeholder="Format: IT12345678"
                     value={m4id}
                     pattern="[A-Z]{2}\d{8}"
                     onChange={(e) => setMember4Id(e.target.value)}
@@ -200,7 +204,8 @@ const CreateStudentGroups = () => {
                   <Form.Label>Member 4 Name</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Member 4 Name"
+                    placeholder="Maximum 5 words."
+                      pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
                     value={m4name}
                     onChange={(e) => setMember4Name(e.target.value)}
                     required
@@ -212,7 +217,8 @@ const CreateStudentGroups = () => {
             <Form.Group className="mb-3" controlId="gname">
               <Form.Label>Group Name</Form.Label>
               <Form.Control
-                placeholder="Group Name"
+                placeholder="Group name should be maximum 5 words."
+                pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
                 value={gname}
                 onChange={(e) => setGroupName(e.target.value)}
                 required

@@ -43,7 +43,8 @@ const PanelAssignForm = () => {
         <Form.Group className="mb-3" controlId="gid">
           <Form.Label>Group ID</Form.Label>
           <Form.Control
-            placeholder="Group ID"
+            placeholder="Should be this format: AB1234"
+            pattern="[A-Z]{2}\d{4}"
             value={gid}
             onChange={(e) => setGroupId(e.target.value)}
             required
@@ -53,7 +54,8 @@ const PanelAssignForm = () => {
         <Form.Group className="mb-3" controlId="gname">
           <Form.Label>Group Name</Form.Label>
           <Form.Control
-            placeholder="Group Name"
+            placeholder="Group Name should be maximum 5 words."
+            pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
             value={gname}
             onChange={(e) => setGroupName(e.target.value)}
             required
@@ -64,6 +66,7 @@ const PanelAssignForm = () => {
           <Form.Label>Panel Member 1 Name</Form.Label>
           <Form.Control
             placeholder="Panel Member 1 Name"
+            pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
             value={pmember1}
             onChange={(e) => setPMember1(e.target.value)}
             required
@@ -74,6 +77,7 @@ const PanelAssignForm = () => {
           <Form.Label>Panel Member 2 Name</Form.Label>
           <Form.Control
             placeholder="Panel Member 2 Name"
+            pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
             value={pmember2}
             onChange={(e) => setPMember2(e.target.value)}
             required
@@ -83,7 +87,8 @@ const PanelAssignForm = () => {
         <Form.Group className="mb-3" controlId="topic">
           <Form.Label>Research Topic</Form.Label>
           <Form.Control
-            placeholder="Research Topic"
+            placeholder="Research Topic should be maximum 5 words."
+            pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,10}$"
             value={topic}
             onChange={(e) => setResearchTopic(e.target.value)}
             required
