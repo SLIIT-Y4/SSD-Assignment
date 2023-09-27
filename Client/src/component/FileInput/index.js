@@ -10,9 +10,38 @@ const FileInput = ({ name, label, value, type, handleInputState, ...rest }) => {
   const [progressShow, setProgressShow] = useState(false);
 
   const handleUpload = () => {
+    // Validation and sanitization checks
+    if (!value) {
+      alert("Please select a file to upload.");
+      return;
+    }
+
+    // Perform file type validation
+    const allowedFileTypes = [
+      "application/msword", // for docx
+      "application/pdf", // for pdf
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation", // for pptx
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // for xlsx
+    ];
+
+    if (!allowedFileTypes.includes(value.type)) {
+      alert("Invalid file type. Please upload an document, pdf, presentation or excel sheet file.");
+      return;
+    }
+
+    // Restrict file size (e.g., 5 MB)
+    const maxSize = 20 * 1024 * 1024; // 5 MB in bytes
+    if (value.size > maxSize) {
+      alert("File size exceeds the maximum allowed size (20MB).");
+      return;
+    }
+
+    // Sanitize file name
+    const fileName = sanitizeFileName(new Date().getTime() + value.name);
+
     //we will upload logic here
     setProgressShow(true);
-    const fileName = new Date().getTime() + value.name;
+    //const fileName = new Date().getTime() + value.name;
 
     const storageRef = ref(
       storage,
@@ -40,6 +69,11 @@ const FileInput = ({ name, label, value, type, handleInputState, ...rest }) => {
         });
       }
     );
+  };
+
+  const sanitizeFileName = (fileName) => {
+    // Remove spaces and special characters from the file name
+    return fileName.replace(/[^a-zA-Z0-9.-]/g, "_");
   };
 
   return (
