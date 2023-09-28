@@ -65,7 +65,7 @@ const StudentReg = () => {
     }
     setvalidated(true);
   };
-
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
   return (
     <div>
       <Header />
@@ -220,11 +220,12 @@ const StudentReg = () => {
                   <Form.Check
                     type="checkbox"
                     label="I Agree to Terms & Conditions"
+                    onChange={(e) => setIsCheckboxChecked(e.target.checked)}
                     required
                   />
                 </Form.Group>
 
-                <Button className="butnreg" variant="success" type="submit">
+                <Button className="butnreg" variant="success" type="submit" disabled={!isCheckboxChecked}>
                   Submit
                 </Button>
               </Form>

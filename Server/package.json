@@ -8,6 +8,8 @@
     "acorn": "^8.7.1",
     "ansi-styles": "^4.3.0",
     "base-x": "^3.0.9",
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
     "boolbase": "^1.0.0",
     "browserslist": "^4.20.3",

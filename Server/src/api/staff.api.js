@@ -30,7 +30,7 @@ router.post("/register", [
 ], StaffController.registerStaff);
 
 // Profile details
-router.get("/students/:email", [
+router.get("/staffs/:email", [
   param('email').isEmail().withMessage('A valid email is required')
 ], StaffController.profileDetails);
 
