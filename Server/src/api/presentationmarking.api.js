@@ -1,10 +1,20 @@
 const express = require("express");
 const router = express.Router();
 const PresentationMarkingController = require("../controller/presentationmarking.controller");
+const { validateToken } = require("../auth/authorization");
 
 module.exports = function () {
-  router.post("/create", PresentationMarkingController.createMarkingScheme);
-  router.get("/", PresentationMarkingController.getAllMarkingSchemes);
-  router.get("/:id", PresentationMarkingController.getMarkingScheme);
+  router.post("/create", [
+    validateToken(),
+    PresentationMarkingController.createMarkingScheme,
+  ]);
+  router.get("/", [
+    validateToken(),
+    PresentationMarkingController.getAllMarkingSchemes,
+  ]);
+  router.get("/:id", [
+    validateToken(),
+    PresentationMarkingController.getMarkingScheme,
+  ]);
   return router;
 };

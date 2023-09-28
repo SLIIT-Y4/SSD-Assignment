@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import EvaluationForm from "./EvaluationForm";
 import SubmitedDocuments from "./SubmitedDocuments";
+import { headers } from "./ApiHeader";
 
 const EvaluateDocument = () => {
   const [documentmarkings, SetDocumentMarkings] = useState([]);
@@ -14,7 +15,9 @@ const EvaluateDocument = () => {
   useEffect(() => {
     const getDocumentMarkings = () => {
       axios
-        .get("https://localhost:5000/documentmarking")
+        .get("https://localhost:5000/documentmarking", {
+          headers: headers,
+        })
         .then((res) => {
           SetDocumentMarkings(res.data);
         })

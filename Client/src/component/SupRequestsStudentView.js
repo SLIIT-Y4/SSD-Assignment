@@ -4,6 +4,7 @@ import Table from "react-bootstrap/Table";
 import axios from "axios";
 import Badge from "react-bootstrap/Badge";
 import StudentSideNavBar from "./StudentSideNavBar";
+import { headers } from "./ApiHeader";
 
 const SupRequestsStudentView = () => {
   const [sups, setSupervisor] = useState([]);
@@ -11,7 +12,9 @@ const SupRequestsStudentView = () => {
   useEffect(() => {
     const getSupervisors = () => {
       axios
-        .get("https://localhost:5000/sup")
+        .get("https://localhost:5000/sup", {
+          headers: headers,
+        })
         .then((res) => {
           setSupervisor(res.data);
         })
@@ -54,7 +57,8 @@ const SupRequestsStudentView = () => {
                   <td>{sup.groupName}</td>
                   <td>{sup.field}</td>
                   <td>
-                    {sup.supervisorName} <Badge bg="warning">{sup.status}</Badge>{" "}
+                    {sup.supervisorName}{" "}
+                    <Badge bg="warning">{sup.status}</Badge>{" "}
                   </td>
                 </tr>
               </tbody>

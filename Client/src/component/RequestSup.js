@@ -5,6 +5,7 @@ import { useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
 import StudentSideNavBar from "./StudentSideNavBar";
+import { headers } from "./ApiHeader";
 
 const RequestSup = () => {
   const [validated, setvalidated] = useState(false);
@@ -28,7 +29,9 @@ const RequestSup = () => {
       event.stopPropagation();
     } else {
       axios
-        .post("https://localhost:5000/sup/request", newSupRequest)
+        .post("https://localhost:5000/sup/request", newSupRequest, {
+          headers: headers,
+        })
         .then(() => swal("Success!", "Request Sent Successfully!", "success"))
         .catch((err) => swal("Failed!", "Something Went Wrong!", "error"));
     }

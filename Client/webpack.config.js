@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const webpack = require("webpack");
 
 const outputDirectory = "dist";
 
@@ -51,6 +52,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       //   favicon: "./public/favicon.ico",
+    }),
+    new webpack.DefinePlugin({
+      "process.env.API_TOKEN": JSON.stringify(
+        "YcCMFYyG5z4QOJHzJfMTG2RARMZdksxQ"
+      ),
     }),
   ],
   resolve: {

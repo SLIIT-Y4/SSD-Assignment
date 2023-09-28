@@ -7,6 +7,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import { headers } from "./ApiHeader";
 
 const CreateMarkingScheme = () => {
   const [validated, setValidated] = useState(false);
@@ -57,7 +58,10 @@ const CreateMarkingScheme = () => {
         axios
           .post(
             "https://localhost:5000/documentmarking/create",
-            newMarkingScheme
+            newMarkingScheme,
+            {
+              headers: headers,
+            }
           )
           .then(
             () =>
@@ -69,7 +73,10 @@ const CreateMarkingScheme = () => {
         axios
           .post(
             "https://localhost:5000/presentationmarking/create",
-            newMarkingScheme
+            newMarkingScheme,
+            {
+              headers: headers,
+            }
           )
           .then(
             () =>
@@ -105,7 +112,7 @@ const CreateMarkingScheme = () => {
             marginRight: "365px",
             backgroundColor: "whitesmoke",
             padding: "15px",
-            borderRadius:"10px"
+            borderRadius: "10px",
           }}
         >
           <center>

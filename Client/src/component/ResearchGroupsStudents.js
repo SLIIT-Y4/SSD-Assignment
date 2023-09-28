@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import StudentSideNavBar from "./StudentSideNavBar";
+import { headers } from "./ApiHeader";
 
 const ResearchGroupsStudents = () => {
   const [groups, setGroup] = useState([]);
@@ -12,7 +13,9 @@ const ResearchGroupsStudents = () => {
   useEffect(() => {
     const getGroups = () => {
       axios
-        .get("https://localhost:5000/group")
+        .get("https://localhost:5000/group", {
+          headers: headers,
+        })
         .then((res) => {
           setGroup(res.data);
         })
@@ -43,7 +46,7 @@ const ResearchGroupsStudents = () => {
             Create New Group
           </Button>
         </Link>
-        <hr style={{color : "white", marginLeft: "20px"}} />
+        <hr style={{ color: "white", marginLeft: "20px" }} />
         <br />
 
         <div className="grouptable">

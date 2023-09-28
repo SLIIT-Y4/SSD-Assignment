@@ -8,6 +8,7 @@ import { BsPersonSquare } from "react-icons/bs";
 import { MdPermIdentity } from "react-icons/md";
 import { MdArticle } from "react-icons/md";
 import { MdHolidayVillage } from "react-icons/md";
+import { headers } from "./ApiHeader";
 
 const Profile = ({ profile }) => {
   const token = JSON.parse(sessionStorage.getItem("token"));
@@ -16,7 +17,9 @@ const Profile = ({ profile }) => {
   useEffect(() => {
     if (token.type == "Student") {
       axios
-        .get(`https://localhost:5000/student/students/${token.email}`)
+        .get(`https://localhost:5000/student/students/${token.email}`, {
+          headers: headers,
+        })
         .then((res) => {
           console.log(res.data.data);
           setProfiledetails(res.data.data);
@@ -26,7 +29,9 @@ const Profile = ({ profile }) => {
         });
     } else if (token.type == "Admin") {
       axios
-        .get(`https://localhost:5000/Admin/admins/${token.email}`)
+        .get(`https://localhost:5000/Admin/admins/${token.email}`, {
+          headers: headers,
+        })
         .then((res) => {
           console.log(res.data.data);
           setProfiledetails(res.data.data);
@@ -36,7 +41,9 @@ const Profile = ({ profile }) => {
         });
     } else {
       axios
-        .get(`https://localhost:5000/staff/staffs/${token.email}`)
+        .get(`https://localhost:5000/staff/staffs/${token.email}`, {
+          headers: headers,
+        })
         .then((res) => {
           console.log(res.data.data);
           setProfiledetails(res.data.data);

@@ -6,6 +6,7 @@ import axios from "axios";
 import Badge from "react-bootstrap/Badge";
 import { useNavigate } from "react-router-dom";
 import SupervisorSideNavBar from "./SupervisorSideNavBar";
+import { headers } from "./ApiHeader";
 
 const SupRequestsStaffView = () => {
   const [sups, setSupervisor] = useState([]);
@@ -13,7 +14,9 @@ const SupRequestsStaffView = () => {
   useEffect(() => {
     const getSupervisors = () => {
       axios
-        .get("https://localhost:5000/sup")
+        .get("https://localhost:5000/sup", {
+          headers: headers,
+        })
         .then((res) => {
           setSupervisor(res.data);
         })
@@ -31,7 +34,9 @@ const SupRequestsStaffView = () => {
       };
 
       axios
-        .put(`https://localhost:5000/sup/update/${id}`, updateStatus)
+        .put(`https://localhost:5000/sup/update/${id}`, updateStatus, {
+          headers: headers,
+        })
         .then(() => navigate("/supstaff"))
         .catch((err) => alert(err));
     } else if (val == 2) {
@@ -40,7 +45,9 @@ const SupRequestsStaffView = () => {
       };
 
       axios
-        .put(`https://localhost:5000/sup/update/${id}`, updateStatus)
+        .put(`https://localhost:5000/sup/update/${id}`, updateStatus, {
+          headers: headers,
+        })
         .then(() => navigate("/supstaff"))
         .catch((err) => alert(err));
     } else {
@@ -49,7 +56,9 @@ const SupRequestsStaffView = () => {
       };
 
       axios
-        .put(`https://localhost:5000/sup/update/${id}`, updateStatus)
+        .put(`https://localhost:5000/sup/update/${id}`, updateStatus, {
+          headers: headers,
+        })
         .then(() => navigate("/supstaff"))
         .catch((err) => alert(err));
     }
@@ -91,7 +100,8 @@ const SupRequestsStaffView = () => {
                   <td>{sup.groupName}</td>
                   <td>{sup.field}</td>
                   <td>
-                    {sup.supervisorName} <Badge bg="warning">{sup.status}</Badge>{" "}
+                    {sup.supervisorName}{" "}
+                    <Badge bg="warning">{sup.status}</Badge>{" "}
                   </td>
                   <td>
                     {" "}

@@ -6,6 +6,7 @@ import axios from "axios";
 import React from "react";
 import swal from "sweetalert";
 import StudentSideNavBar from "./StudentSideNavBar";
+import { headers } from "./ApiHeader";
 
 const RequestCoSup = () => {
   const [validated, setvalidated] = useState(false);
@@ -29,7 +30,9 @@ const RequestCoSup = () => {
       event.stopPropagation();
     } else {
       axios
-        .post("https://localhost:5000/cosup/request", newCoSupRequest)
+        .post("https://localhost:5000/cosup/request", newCoSupRequest, {
+          headers: headers,
+        })
         .then(() => swal("Success!", "Request Sent Successfully!", "success"))
         .catch((err) => swal("Failed!", "Something Went Wrong!", "error"));
     }

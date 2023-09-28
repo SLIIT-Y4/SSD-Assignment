@@ -6,6 +6,7 @@ import axios from "axios";
 import Badge from "react-bootstrap/Badge";
 import { useNavigate } from "react-router-dom";
 import SupervisorSideNavBar from "./SupervisorSideNavBar";
+import { headers } from "./ApiHeader";
 
 const CoSupRequestsStaffView = () => {
   const [cosups, setCoSupervisor] = useState([]);
@@ -13,7 +14,9 @@ const CoSupRequestsStaffView = () => {
   useEffect(() => {
     const getCoSupervisors = () => {
       axios
-        .get("https://localhost:5000/cosup")
+        .get("https://localhost:5000/cosup", {
+          headers: headers,
+        })
         .then((res) => {
           setCoSupervisor(res.data);
         })
@@ -31,7 +34,9 @@ const CoSupRequestsStaffView = () => {
       };
 
       axios
-        .put(`https://localhost:5000/cosup/update/${id}`, updateStatus)
+        .put(`https://localhost:5000/cosup/update/${id}`, updateStatus, {
+          headers: headers,
+        })
         .then(() => navigate("/cosupstaff"))
         .catch((err) => alert(err));
     } else if (val == 2) {
@@ -40,7 +45,9 @@ const CoSupRequestsStaffView = () => {
       };
 
       axios
-        .put(`https://localhost:5000/cosup/update/${id}`, updateStatus)
+        .put(`https://localhost:5000/cosup/update/${id}`, updateStatus, {
+          headers: headers,
+        })
         .then(() => navigate("/cosupstaff"))
         .catch((err) => alert(err));
     } else {
@@ -49,7 +56,9 @@ const CoSupRequestsStaffView = () => {
       };
 
       axios
-        .put(`https://localhost:5000/cosup/update/${id}`, updateStatus)
+        .put(`https://localhost:5000/cosup/update/${id}`, updateStatus, {
+          headers: headers,
+        })
         .then(() => navigate("/cosupstaff"))
         .catch((err) => alert(err));
     }

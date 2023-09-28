@@ -5,12 +5,16 @@ import Button from "react-bootstrap/Button";
 import swal from "sweetalert";
 
 import axios from "axios";
+import { headers } from "./ApiHeader";
 
 const ModleStudentDelete = (props) => {
   const deleteStudent = () => {
     axios
       .delete(
-        `https://localhost:5000/student/delete/${props.deleteAdminStudentView._id}`
+        `https://localhost:5000/student/delete/${props.deleteAdminStudentView._id}`,
+        {
+          headers: headers,
+        }
       )
       .then(() => {
         swal("Deleted!", "Successfully Deleted", "success");

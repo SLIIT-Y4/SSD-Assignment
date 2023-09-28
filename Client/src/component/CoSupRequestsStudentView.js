@@ -4,6 +4,7 @@ import Table from "react-bootstrap/Table";
 import axios from "axios";
 import Badge from "react-bootstrap/Badge";
 import StudentSideNavBar from "./StudentSideNavBar";
+import { headers } from "./ApiHeader";
 
 const CoSupRequestsStudentView = () => {
   const [cosups, setCoSupervisor] = useState([]);
@@ -11,7 +12,9 @@ const CoSupRequestsStudentView = () => {
   useEffect(() => {
     const getCoSupervisors = () => {
       axios
-        .get("https://localhost:5000/cosup")
+        .get("https://localhost:5000/cosup", {
+          headers: headers,
+        })
         .then((res) => {
           setCoSupervisor(res.data);
         })

@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import ModleStaffDelete from "./AdminModalDelStaffs";
 import ModalnewStaff from "./AdminModalUpdStaff";
 import axios from "axios";
+import { headers } from "./ApiHeader";
 
 const AdminStaffView = () => {
   const [modalStfUpdate, setmodalStfUpdate] = React.useState(false);
@@ -19,7 +20,9 @@ const AdminStaffView = () => {
   useEffect(() => {
     const getAdminStaffViews = () => {
       axios
-        .get("https://localhost:5000/staff")
+        .get("https://localhost:5000/staff", {
+          headers: headers,
+        })
         .then((res) => {
           setAdminStaffView(res.data);
           console.log(res.data);
