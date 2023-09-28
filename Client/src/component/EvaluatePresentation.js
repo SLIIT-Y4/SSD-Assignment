@@ -15,7 +15,7 @@ const EvaluatePresentation = () => {
   useEffect(() => {
     const getPresentationMarkings = () => {
       axios
-        .get("http://localhost:5000/presentationmarking", {
+        .get("https://localhost:5000/presentationmarking", {
           headers: headers,
         })
         .then((res) => {

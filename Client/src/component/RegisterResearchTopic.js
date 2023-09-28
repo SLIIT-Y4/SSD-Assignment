@@ -32,7 +32,7 @@ const RegisterResearchTopic = () => {
       event.stopPropagation();
     } else {
       axios
-        .post("http://localhost:5000/topic/add", newRegTopic, {
+        .post("https://localhost:5000/topic/add", newRegTopic, {
           headers: headersers,
         })
         .then(

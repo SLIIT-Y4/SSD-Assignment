@@ -11,7 +11,7 @@ const SubmitedDocuments = () => {
   useEffect(() => {
     const getSubmissions = () => {
       axios
-        .get("http://localhost:5000/submission", {
+        .get("https://localhost:5000/submission", {
           headers: headers,
         })
         .then((res) => {

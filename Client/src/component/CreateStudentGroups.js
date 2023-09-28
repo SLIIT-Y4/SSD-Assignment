@@ -45,7 +45,7 @@ const CreateStudentGroups = () => {
       event.stopPropagation();
     } else {
       axios
-        .post("http://localhost:5000/group/register", newGroup, {
+        .post("https://localhost:5000/group/register", newGroup, {
           headers: headers,
         })
         .then(() =>

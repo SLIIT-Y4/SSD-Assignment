@@ -14,7 +14,7 @@ const ResearchGroups = () => {
   useEffect(() => {
     const getGroups = () => {
       axios
-        .get("http://localhost:5000/group", {
+        .get("https://localhost:5000/group", {
           headers: headers,
         })
         .then((res) => {

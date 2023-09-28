@@ -39,7 +39,7 @@ const SubTypes = ({ upd }) => {
     } else {
       if (upd == null) {
         axios
-          .post("http://localhost:5000/subtype/add", newSubType, {
+          .post("https://localhost:5000/subtype/add", newSubType, {
             headers: headers,
           })
           .then(() => alert("You posted a link"))
@@ -47,7 +47,7 @@ const SubTypes = ({ upd }) => {
         console.log(newSubType);
       } else {
         axios
-          .put(`http://localhost:5000/subtype/update/${upd._id}`, newSubType, {
+          .put(`https://localhost:5000/subtype/update/${upd._id}`, newSubType, {
             headers: headers,
           })
           .then(() => alert("Link is Updated"))

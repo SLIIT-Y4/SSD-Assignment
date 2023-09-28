@@ -11,7 +11,7 @@ const ModleStaffDelete = (props) => {
   const deleteStaff = () => {
     axios
       .delete(
-        `http://localhost:5000/staff/delete/${props.deleteAdminStaffView._id}`,
+        `https://localhost:5000/staff/delete/${props.deleteAdminStaffView._id}`,
         {
           headers: headers,
         }

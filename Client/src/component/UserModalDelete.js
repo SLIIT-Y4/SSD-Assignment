@@ -10,7 +10,7 @@ const Modaldelete = (props) => {
   const opp = () => {
     if (props.type == "delete") {
       axios
-        .delete(`http://localhost:5000/staff/delete/${props.profile._id}`, {
+        .delete(`https://localhost:5000/staff/delete/${props.profile._id}`, {
           headers: headers,
         })
         .then(() => {
@@ -22,7 +22,7 @@ const Modaldelete = (props) => {
         });
 
       axios
-        .delete(`http://localhost:5000/student/delete/${props.profile._id}`, {
+        .delete(`https://localhost:5000/student/delete/${props.profile._id}`, {
           headers: headers,
         })
         .then(() => {
@@ -34,7 +34,7 @@ const Modaldelete = (props) => {
         });
 
       axios
-        .delete(`http://localhost:5000/Admin/delete/${props.profile._id}`, {
+        .delete(`https://localhost:5000/Admin/delete/${props.profile._id}`, {
           headers: headers,
         })
         .then(() => {

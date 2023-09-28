@@ -32,7 +32,7 @@ const StaffProEdit = ({ det }) => {
       event.stopPropagation();
     } else {
       axios
-        .put(`http://localhost:5000/staff/update/${det._id}`, updateUser, {
+        .put(`https://localhost:5000/staff/update/${det._id}`, updateUser, {
           headers: headers,
         })
         .then(

@@ -71,7 +71,7 @@ const EvaluationForm = (props) => {
       event.stopPropagation();
     } else {
       axios
-        .post("http://localhost:5000/evaluation/evaluate", newEvaluation, {
+        .post("https://localhost:5000/evaluation/evaluate", newEvaluation, {
           headers: headers,
         })
         .then(() =>

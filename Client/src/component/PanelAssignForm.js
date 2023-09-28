@@ -29,7 +29,7 @@ const PanelAssignForm = () => {
       event.stopPropagation();
     } else {
       axios
-        .post("http://localhost:5000/panel/add", newPanelAssign, {
+        .post("https://localhost:5000/panel/add", newPanelAssign, {
           headers: headers,
         })
         .then(() =>

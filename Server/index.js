@@ -5,7 +5,15 @@ require("dotenv").config();
 const connectDB = require("./src/config/config");
 const app = express();
 
+const https = require("https");
+const fs = require("fs");
+
 const PORT = process.env.PORT || 5000;
+
+const options = {
+  key: fs.readFileSync("./security/cert.key"),
+  cert: fs.readFileSync("./security/cert.pem"),
+};
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -61,6 +69,12 @@ app.use("/evaluation", evaluationAPI());
 const panelApi = require("./src/api/panel.api");
 app.use("/panel", panelApi());
 
-app.listen(PORT, () => {
-  console.log(`App listening at http://localhost:${PORT}`);
+// app.listen(PORT, () => {
+//   console.log(`App listening at http://localhost:${PORT}`);
+// });
+
+const server = https.createServer(options, app);
+
+server.listen(PORT, () => {
+  console.log(`Server is running on https://localhost:${PORT}`);
 });

@@ -30,7 +30,7 @@ const RequestCoSup = () => {
       event.stopPropagation();
     } else {
       axios
-        .post("http://localhost:5000/cosup/request", newCoSupRequest, {
+        .post("https://localhost:5000/cosup/request", newCoSupRequest, {
           headers: headers,
         })
         .then(() => swal("Success!", "Request Sent Successfully!", "success"))
