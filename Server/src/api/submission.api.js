@@ -1,19 +1,33 @@
 const express = require("express");
 const router = express.Router();
 const UploadSubController = require("../controller/submission.controller");
-const { validateToken } = require("../auth/authorization");
+const { validateToken, isStudent, isStaff } = require("../auth/authorization");
 
 module.exports = function () {
-  router.post("/", [validateToken(), UploadSubController.addSubDoc]);
-  router.get("/:id", [validateToken(), UploadSubController.getSubDoc]);
+  router.post("/", [
+    validateToken(),
+    isStudent(),
+    UploadSubController.addSubDoc,
+  ]);
+  router.get("/:id", [
+    validateToken(),
+    isStaff(),
+    UploadSubController.getSubDoc,
+  ]);
   router.put("/update/:id", [
     validateToken(),
+    isStudent(),
     UploadSubController.updateSubDoc,
   ]);
   router.delete("/delete/:id", [
     validateToken(),
+    isStudent(),
     UploadSubController.deleteSubDoc,
   ]);
-  router.get("/", [validateToken(), UploadSubController.getAllSubDocs]);
+  router.get("/", [
+    validateToken(),
+    isStaff(),
+    UploadSubController.getAllSubDocs,
+  ]);
   return router;
 };
