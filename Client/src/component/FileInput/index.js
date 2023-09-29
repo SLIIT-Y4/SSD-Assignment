@@ -29,8 +29,8 @@ const FileInput = ({ name, label, value, type, handleInputState, ...rest }) => {
       return;
     }
 
-    // Restrict file size (e.g., 5 MB)
-    const maxSize = 20 * 1024 * 1024; // 5 MB in bytes
+    // Restrict file size (e.g., 20 MB)
+    const maxSize = 20 * 1024 * 1024; // 20 MB in bytes
     if (value.size > maxSize) {
       alert("File size exceeds the maximum allowed size (20MB).");
       return;
