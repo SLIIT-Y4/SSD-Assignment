@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
+import { headers } from "./ApiHeader";
 
 const PanelAssignForm = () => {
   const [validated, setvalidated] = useState(false);
@@ -28,7 +29,9 @@ const PanelAssignForm = () => {
       event.stopPropagation();
     } else {
       axios
-        .post("http://localhost:5000/panel/add", newPanelAssign)
+        .post("https://localhost:5000/panel/add", newPanelAssign, {
+          headers: headers,
+        })
         .then(() =>
           swal("Success!", "Details Submitted Successfully!", "success")
         )

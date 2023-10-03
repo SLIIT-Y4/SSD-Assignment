@@ -8,7 +8,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import StudentSideNavBar from "./StudentSideNavBar";
 import swal from "sweetalert";
-
+import { headers } from "./ApiHeader";
 
 const CreateStudentGroups = () => {
   const [validated, setvalidated] = useState(false);
@@ -25,7 +25,6 @@ const CreateStudentGroups = () => {
   const [gname, setGroupName] = useState("");
 
   const checkSubmit = (event) => {
-    
     const newGroup = {
       leaderID: lid,
       leaderName: lname,
@@ -46,15 +45,16 @@ const CreateStudentGroups = () => {
       event.stopPropagation();
     } else {
       axios
-        .post("http://localhost:5000/group/register", newGroup)
-        .then(() => swal("Success!", "Details Submitted Successfully!", "success"),
+        .post("https://localhost:5000/group/register", newGroup, {
+          headers: headers,
+        })
+        .then(() =>
+          swal("Success!", "Details Submitted Successfully!", "success")
         )
         .catch((err) => swal("Failed!", "Something Went Wrong!", "error"));
     }
     setvalidated(true);
   };
-
-  
 
   return (
     <div

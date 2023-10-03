@@ -61,11 +61,19 @@ const UserLogin = () => {
         return; // Prevent further actions
     }
 
-    axios.get(`http://localhost:5000/login/${email}`).then((res) => {
-      console.log("Inside .then() callback of API call");
-        if (res.data.data != null) {
-            let hashPass = res.data.data.password;
-           
+    axios.get(`https://localhost:5000/login/${email}`).then((res) => {
+      if (res.data.data != null) {
+        let hashPass = res.data.data.password;
+        console.log(password);
+        const isValid = bcrypt.compareSync(password, hashPass);
+        if (isValid) {
+          console.log(res.data);
+          const token = {
+            id: res.data.data._id,
+            iD: res.data.data.iD,
+            email: res.data.data.email,
+            type: res.data.data.type,
+          };
 
             // Check if user is locked
         if (res.data.data.isLocked) {
@@ -95,7 +103,7 @@ const UserLogin = () => {
             handleFailedLoginAttempt();
             swal("Error!", "Invalid Email", "error");
         }
-    }).catch((error) => {
+    }}).catch((error) => {
         console.error("Error during login:", error);
     });
 }

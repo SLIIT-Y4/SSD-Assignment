@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const webpack = require("webpack");
 
 const outputDirectory = "dist";
 
@@ -32,10 +33,17 @@ module.exports = {
     ],
   },
   devServer: {
-    port: 8080,
+    static: {
+      directory: path.join(__dirname, "public"),
+    },
+    port: 3000,
+    https: {
+      key: path.resolve(__dirname, "./security/server.key"),
+      cert: path.resolve(__dirname, "./security/server.crt"),
+    },
     open: true,
     proxy: {
-      "/api": "http://localhost:8080",
+      "/api": "https://localhost:3000",
     },
     historyApiFallback: true,
   },
@@ -44,6 +52,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       //   favicon: "./public/favicon.ico",
+    }),
+    new webpack.DefinePlugin({
+      "process.env.API_TOKEN": JSON.stringify(
+        "YcCMFYyG5z4QOJHzJfMTG2RARMZdksxQ"
+      ),
     }),
   ],
   resolve: {

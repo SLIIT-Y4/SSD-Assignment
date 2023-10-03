@@ -6,6 +6,7 @@ import { Row, Col } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import { headers } from "./ApiHeader";
 
 const EvaluationForm = (props) => {
   const token = JSON.parse(sessionStorage.getItem("token"));
@@ -70,7 +71,9 @@ const EvaluationForm = (props) => {
       event.stopPropagation();
     } else {
       axios
-        .post("http://localhost:5000/evaluation/evaluate", newEvaluation)
+        .post("https://localhost:5000/evaluation/evaluate", newEvaluation, {
+          headers: headers,
+        })
         .then(() =>
           swal("Success!", "Evaluation Saved Successfully!", "success")
         )

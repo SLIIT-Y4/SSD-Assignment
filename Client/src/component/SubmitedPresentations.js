@@ -1,25 +1,28 @@
-import React from 'react'
+import React from "react";
 import { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import { headers } from "./ApiHeader";
 
 const SubmitedPresentations = () => {
-    const [submissions, setSubmissions] = useState([]);
+  const [submissions, setSubmissions] = useState([]);
 
-    useEffect(() => {
-      const getSubmissions = () => {
-        axios
-          .get("http://localhost:5000/submission")
-          .then((res) => {
-            setSubmissions(res.data);
-          })
-          .catch((err) => {
-            alert(err.msg);
-          });
-      };
-      getSubmissions();
-    }, []);
+  useEffect(() => {
+    const getSubmissions = () => {
+      axios
+        .get("https://localhost:5000/submission", {
+          headers: headers,
+        })
+        .then((res) => {
+          setSubmissions(res.data);
+        })
+        .catch((err) => {
+          alert(err.msg);
+        });
+    };
+    getSubmissions();
+  }, []);
   return (
     <div>
       <Table striped bordered hover variant="dark">
@@ -46,6 +49,6 @@ const SubmitedPresentations = () => {
       </Table>
     </div>
   );
-}
+};
 
-export default SubmitedPresentations
+export default SubmitedPresentations;

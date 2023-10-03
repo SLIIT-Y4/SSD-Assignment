@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
+import { headers } from "./ApiHeader";
 
 const StudentProEdit = ({ det }) => {
   const [validated, setvalidated] = useState(false);
@@ -27,7 +28,9 @@ const StudentProEdit = ({ det }) => {
       event.stopPropagation();
     } else {
       axios
-        .put(`http://localhost:5000/admin/update/${det._id}`, updateStudent)
+        .put(`https://localhost:5000/admin/update/${det._id}`, updateStudent, {
+          headers: headers,
+        })
         .then(
           (data) => console.log(data),
           swal("Updated!", "Successfully Updated", "success")

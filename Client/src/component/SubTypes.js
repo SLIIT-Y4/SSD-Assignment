@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 import AdminSideNavBar from "./AdminSideNavBar";
+import { headers } from "./ApiHeader";
 
 const SubTypes = ({ upd }) => {
   const [validated, setvalidated] = useState(false);
@@ -50,10 +51,22 @@ const SubTypes = ({ upd }) => {
         .then(() => alert("You posted a link"))
         .catch((err) => alert(err));
     } else {
-      axios
-        .put(`http://localhost:5000/subtype/update/${upd._id}`, newSubType)
-        .then(() => alert("Link is Updated"))
-        .catch((err) => alert(err));
+      if (upd == null) {
+        axios
+          .post("https://localhost:5000/subtype/add", newSubType, {
+            headers: headers,
+          })
+          .then(() => alert("You posted a link"))
+          .catch((err) => alert(err));
+        console.log(newSubType);
+      } else {
+        axios
+          .put(`https://localhost:5000/subtype/update/${upd._id}`, newSubType, {
+            headers: headers,
+          })
+          .then(() => alert("Link is Updated"))
+          .catch((err) => alert(err));
+      }
     }
     setvalidated(true);
   };

@@ -48,7 +48,7 @@ const StudentReg = () => {
     } else {
       if (cpassword == password) {
         axios
-          .post("http://localhost:5000/student/register", newStudent)
+          .post("https://localhost:5000/student/register", newStudent)
           .then(
             (data) => console.log(data),
             swal("Submitted!", "Successfully Registered", "success")
@@ -56,7 +56,7 @@ const StudentReg = () => {
           .catch((err) => alert(err));
 
         axios
-          .post("http://localhost:5000/login/add", newLogin)
+          .post("https://localhost:5000/login/add", newLogin)
           .then(() => swal("Submitted!", "Successfully Registered", "success"))
           .catch((err) => alert(err));
       } else {

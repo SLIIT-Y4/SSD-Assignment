@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const StudentController = require("../controller/student.controller");
+const { validateToken } = require("../auth/authorization");
 
 // module.exports = function () {
 //   router.post("/register", StudentController.registerStudent);
@@ -32,21 +33,23 @@ router.post("/register", [
 // Profile details
 router.get("/students/:email", [
   param('email').isEmail().withMessage('A valid email is required')
-], StudentController.profileDetails);
+], [validateToken(), StudentController.profileDetails]);
 
 //get all students
-router.get("/", StudentController.getAllStudents);
+router.get("/", [validateToken(), StudentController.getAllStudents]);
 
 // Update student
 router.put("/update/:id", [
   param('id').isMongoId().withMessage('A valid ID is required'),
   // ... add more body validations if needed
-], StudentController.updateStudent);
+], [validateToken(), StudentController.updateStudent]);
 
 // Delete student
 router.delete("/delete/:id", [
   param('id').isMongoId().withMessage('A valid ID is required')
-], StudentController.deleteStudent);
-
+], [
+  validateToken(),
+  StudentController.deleteStudent,
+]);
   return router;
 };
