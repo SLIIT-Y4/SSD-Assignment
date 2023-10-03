@@ -1,7 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const StaffController = require("../controller/staff.controller");
-const { validateToken } = require("../auth/authorization");
+const {
+  validateToken,
+  isStaff,
+  isAdmin,
+  isAdminAndStaff,
+  isAdminAndStudent,
+} = require("../auth/authorization");
 
 // module.exports = function () {
 //   router.post("/register", StaffController.registerStaff);
@@ -13,41 +19,60 @@ const { validateToken } = require("../auth/authorization");
 //   return router;
 // };
 
-const { body, param } = require('express-validator');
-
+const { body, param } = require("express-validator");
 
 module.exports = function () {
-// Registration
-router.post("/register", [
-  body('ID').notEmpty().withMessage('ID is required'),
-  body('email').isEmail().withMessage('Valid email is required'),
-  body('firstName').notEmpty().withMessage('First name is required'),
-  body('lastName').notEmpty().withMessage('Last name is required'),
-  body('contactNo').isLength({ min: 10, max: 10 }).withMessage('Contact number should be 10 digits'),
-  body('NIC').notEmpty().withMessage('NIC is required'),
-  body('researchInterest').notEmpty().withMessage('Research Interest is required'),
-  body('faculty').notEmpty().withMessage('Faculty is required'),
-  body('type').notEmpty().withMessage('Type is required'),
-], StaffController.registerStaff);
+  // Registration
+  router.post(
+    "/register",
+    [
+      body("ID").notEmpty().withMessage("ID is required"),
+      body("email").isEmail().withMessage("Valid email is required"),
+      body("firstName").notEmpty().withMessage("First name is required"),
+      body("lastName").notEmpty().withMessage("Last name is required"),
+      body("contactNo")
+        .isLength({ min: 10, max: 10 })
+        .withMessage("Contact number should be 10 digits"),
+      body("NIC").notEmpty().withMessage("NIC is required"),
+      body("researchInterest")
+        .notEmpty()
+        .withMessage("Research Interest is required"),
+      body("faculty").notEmpty().withMessage("Faculty is required"),
+      body("type").notEmpty().withMessage("Type is required"),
+    ],
+    StaffController.registerStaff
+  );
 
-// Profile details
-router.get("/staffs/:email", [
-  param('email').isEmail().withMessage('A valid email is required')
-],[validateToken(), StaffController.profileDetails]);
+  // Profile details
+  router.get(
+    "/staffs/:email",
+    [param("email").isEmail().withMessage("A valid email is required")],
+    [validateToken(), isStaff(), StaffController.profileDetails]
+  );
 
-//get all students
-router.get("/", [validateToken(), StaffController.getAllStaffs]);
+  //get all students
+  router.get("/", [
+    validateToken(),
+    isAdminAndStudent(),
+    StaffController.getAllStaffs,
+  ]);
 
-// Update student
-router.put("/update/:id", [
-  param('id').isMongoId().withMessage('A valid ID is required'),
-  // ... add more body validations if needed
-], [validateToken(), StaffController.updateStaff]);
+  // Update student
+  router.put(
+    "/update/:id",
+    [
+      param("id").isMongoId().withMessage("A valid ID is required"),
+      // ... add more body validations if needed
+    ],
+    [validateToken(), isAdminAndStaff(), StaffController.updateStaff]
+  );
 
-// Delete student
-router.delete("/delete/:id", [
-  param('id').isMongoId().withMessage('A valid ID is required')
-], [validateToken(), StaffController.deleteStaff]);
+  // Delete student
+  router.delete(
+    "/delete/:id",
+    [param("id").isMongoId().withMessage("A valid ID is required")],
+    [validateToken(), isAdminAndStaff(), StaffController.deleteStaff]
+  );
 
   return router;
 };
