@@ -67,7 +67,7 @@ const StaffReg = () => {
     }
     setvalidated(true);
   };
-
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
   return (
     <div>
       <Header />
@@ -81,19 +81,23 @@ const StaffReg = () => {
                   <Form.Group className="inputreg" controlId="iD">
                     <Form.Label>Staff ID</Form.Label>
                     <Form.Control
-                      placeholder="STFC123456"
-                      pattern="STF[A-Z]{1}\d{6}"
+                      placeholder="Format: STFC123456"
+                      pattern="STF(C|B|E|H|SA|GSR|SR)\d{6}"
                       value={ids}
                       onChange={(e) => setId(e.target.value)}
                       required
                     />
+                    <Form.Control.Feedback type="invalid">
+                      Enter your valid Id no.<br/> 
+                      format: STF,Faculty name(C,B,E,H,SA,GSR,SR),6 digits.
+                    </Form.Control.Feedback>
                   </Form.Group>
 
                   <Form.Group className="inputreg" controlId="email">
                     <Form.Label>Email</Form.Label>
                     <Form.Control
                       type="email"
-                      placeholder="abcccc.d@sliit.lk"
+                      placeholder="Format: abcccc.d@sliit.lk"
                       pattern="[a-z]{2,}.[a-z]{1}@sliit.lk"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -108,7 +112,8 @@ const StaffReg = () => {
                   <Form.Group className="inputreg" controlId="fname">
                     <Form.Label>First Name</Form.Label>
                     <Form.Control
-                      placeholder="Enter First Name"
+                      placeholder="You can only type maximum 5 words."
+                      pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
                       value={fname}
                       onChange={(e) => setFirstName(e.target.value)}
                       required
@@ -118,7 +123,8 @@ const StaffReg = () => {
                   <Form.Group className="inputreg" controlId="lname">
                     <Form.Label>Last Name</Form.Label>
                     <Form.Control
-                      placeholder="Enter Last Name"
+                      placeholder="You can only type maximum 5 words."
+                      pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
                       value={lname}
                       onChange={(e) => setLastName(e.target.value)}
                       required
@@ -130,7 +136,7 @@ const StaffReg = () => {
                   <Form.Group className="inputreg" controlId="contactno">
                     <Form.Label>Contact No.</Form.Label>
                     <Form.Control
-                      placeholder="0123456789"
+                      placeholder="Format: 0123456789"
                       pattern="[0-9]{10}"
                       value={contactno}
                       onChange={(e) => setContactNo(e.target.value)}
@@ -144,8 +150,8 @@ const StaffReg = () => {
                   <Form.Group className="inputreg" controlId="nic">
                     <Form.Label>NIC</Form.Label>
                     <Form.Control
-                      placeholder="Enter NIC"
-                      pattern="^([0-9]{9}[x|X|v|V]|[0-9]{12})$"
+                      placeholder="Format: 123456789V/v/X/x or 123456789564"
+                      pattern="^([0-9]{9}[xXvV]|[0-9]{12})$"
                       value={nic}
                       onChange={(e) => setNIC(e.target.value)}
                       required
@@ -159,12 +165,16 @@ const StaffReg = () => {
                 <Form.Group className="inputreg" controlId="interest">
                   <Form.Label>Research Interest</Form.Label>
                   <Form.Control
-                    as="textarea"
-                    placeholder="Enter your research interest"
+                    
+                    placeholder="Please enter your interested resarch field. ex:Machine learning, Mobile app development etc..."
+                    pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,10}$"
                     value={interest}
                     onChange={(e) => setInterest(e.target.value)}
                     required
                   />
+                  <Form.Control.Feedback type="invalid">
+                      You can only type alphabet and maximum 10 words.
+                    </Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group className="inputreg">
@@ -193,7 +203,7 @@ const StaffReg = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                       type="password"
-                      placeholder="Enter a Password"
+                      placeholder="At least 8 characters with 1 Up-case, 1 digit."
                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
@@ -221,11 +231,12 @@ const StaffReg = () => {
                   <Form.Check
                     type="checkbox"
                     label="I Agree to Terms & Conditions"
+                    onChange={(e) => setIsCheckboxChecked(e.target.checked)}
                     required
                   />
                 </Form.Group>
 
-                <Button className="butnreg" variant="success" type="submit">
+                <Button className="butnreg" variant="success" type="submit" disabled={!isCheckboxChecked}>
                   Submit
                 </Button>
               </Form>

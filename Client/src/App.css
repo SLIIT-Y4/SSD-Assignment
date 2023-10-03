@@ -235,6 +235,8 @@ span {
   justify-content: center;
 }
 
+
+
 .Containerregstf {
   width: 100vw;
   height: 150vh;
@@ -250,20 +252,28 @@ span {
   justify-content: center;
 }
 
+/* .wrapperregstu {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 95%;
+  width: 50%;
+  padding: 20px;
+  background-color: rgba(245, 245, 245, 0.482);
+  border-radius: 10px;
+} */
 .wrapperregstu {
   margin-top: 0px;
   margin-bottom: 0px;
-  height: 75%;
+  min-height: 60%; /* Adjust this as needed to set a minimum height */
   width: 50%;
   padding: 20px;
   background-color: rgba(245, 245, 245, 0.482);
   border-radius: 10px;
 }
-
 .wrapperregstf {
   margin-top: 0px;
   margin-bottom: 0px;
-  height: 85%;
+  min-height: 60%;
   width: 50%;
   padding: 20px;
   background-color: rgba(245, 245, 245, 0.482);
@@ -287,7 +297,7 @@ span {
   flex: 1;
   min-width: 40%;
   margin: 10px 0px;
-  padding: 5px;
+  padding: 1px;
 }
 
 .butnreg {
@@ -308,7 +318,7 @@ span {
       rgba(255, 255, 255, 0),
       rgba(255, 255, 255, 0.355)
     ),
-    url("https://i.pinimg.com/originals/f2/65/4c/f2654cdb5044ab78e8ffafbd0b60d4f5.jpg")
+    url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7MbDWObo8na0TiWJa_HBoI1_ACoVG82OJ4A&usqp=CAU")
       center;
   background-size: cover;
   display: flex;
@@ -416,4 +426,8 @@ span {
 }
 .lbtn {
   margin-top: 2%;
+}
+
+.footer{
+  margin-top: 20px;
 }

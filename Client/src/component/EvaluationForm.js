@@ -115,7 +115,8 @@ const EvaluationForm = (props) => {
           <Col>
             <Form.Label>Group ID</Form.Label>
             <Form.Control
-              placeholder="Group ID"
+              placeholder="Format: SD1234"
+              pattern="[A-Z]{2}\d{4}"
               value={gid}
               onChange={(e) => setGID(e.target.value)}
               required
