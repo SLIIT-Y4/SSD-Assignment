@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import StudentSideNavBar from "./StudentSideNavBar";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { headers } from "./ApiHeader";
 
 const AdminStudentView = () => {
   const [AdminStudentViews, setAdminStudentView] = useState([]);
@@ -12,7 +13,9 @@ const AdminStudentView = () => {
   useEffect(() => {
     const getAdminStudentViews = () => {
       axios
-        .get("http://localhost:5000/staff")
+        .get("https://localhost:5000/staff", {
+          headers: headers,
+        })
         .then((res) => {
           setAdminStudentView(res.data);
           console.log(res.data);
@@ -38,12 +41,16 @@ const AdminStudentView = () => {
           <h1 style={{ color: "white" }}>Lecturers</h1>
         </center>
 
-            <hr></hr>
-            <center>
-            <Link to="/requestsup"><Button   variant="primary">Request Supervisor</Button> </Link>
-            <Link  to="/requestcosup"><Button   variant="primary">Request Co-supervisor</Button> </Link>
-            </center>
-            <hr></hr>
+        <hr></hr>
+        <center>
+          <Link to="/requestsup">
+            <Button variant="primary">Request Supervisor</Button>{" "}
+          </Link>
+          <Link to="/requestcosup">
+            <Button variant="primary">Request Co-supervisor</Button>{" "}
+          </Link>
+        </center>
+        <hr></hr>
 
         <Table striped bordered hover variant="dark">
           <thead>

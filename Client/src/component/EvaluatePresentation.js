@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import EvaluationForm from "./EvaluationForm";
 import SubmitedPresentations from "./SubmitedPresentations";
+import { headers } from "./ApiHeader";
 
 const EvaluatePresentation = () => {
   const [presentationmarkings, SetPresentationMarkings] = useState([]);
@@ -14,12 +15,14 @@ const EvaluatePresentation = () => {
   useEffect(() => {
     const getPresentationMarkings = () => {
       axios
-        .get("http://localhost:5000/presentationmarking")
+        .get("https://localhost:5000/presentationmarking", {
+          headers: headers,
+        })
         .then((res) => {
           SetPresentationMarkings(res.data);
         })
         .catch((err) => {
-          alert(err.msg);
+          alert(err.message);
         });
     };
     getPresentationMarkings();
@@ -82,7 +85,7 @@ const EvaluatePresentation = () => {
                 </tbody>
               ))}
             </Table>
-            <hr style={{ color: "white", height:"3px" }} />
+            <hr style={{ color: "white", height: "3px" }} />
             <div
               style={{
                 width: "400px",

@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import StudentSideNavBar from "../StudentSideNavBar";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { headers } from "../ApiHeader";
 
 const StudentSub = () => {
   const navigate = useNavigate();
@@ -34,8 +35,10 @@ const StudentSub = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:5000/submission";
-      const { data: res } = await axios.post(url, sdata);
+      const url = "https://localhost:5000/submission";
+      const { data: res } = await axios.post(url, sdata, {
+        headers: headers,
+      });
       swal("Success!", "Uploaded Successfully!", "success"),
         navigate("/sublinks");
       console.log(res);

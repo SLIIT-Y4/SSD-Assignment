@@ -13,6 +13,7 @@ import { Link } from "@mui/material";
 
 const Footer = () => {
   return (
+    <div className="footer">
     <footer>
       <Box
         style={{ padding: "0px" }}
@@ -127,6 +128,7 @@ const Footer = () => {
         </Container>
       </Box>
     </footer>
+    </div>
   );
 };
 

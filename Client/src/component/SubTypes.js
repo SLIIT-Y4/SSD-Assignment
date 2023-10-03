@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 import AdminSideNavBar from "./AdminSideNavBar";
+import { headers } from "./ApiHeader";
 
 const SubTypes = ({ upd }) => {
   const [validated, setvalidated] = useState(false);
@@ -23,6 +24,18 @@ const SubTypes = ({ upd }) => {
   };
 
   const onSubmit = (event) => {
+    event.preventDefault(); // This stops the form from submitting
+  
+    const form = event.currentTarget;
+  
+    // If the form in general or LinkName specifically is not valid, stop here
+    if (!form.checkValidity() || !linkNameRef.current.validity.valid) {
+      event.stopPropagation();
+      setvalidated(true); // Show validation errors
+      return; // Stop here
+    }
+  
+    // Construct the submission object
     const newSubType = {
       LinkName: LinkName,
       SubmissionType: SubmissionType,
@@ -30,27 +43,35 @@ const SubTypes = ({ upd }) => {
       Time: Time,
       Status: "No attempt",
     };
-
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
+  
+    // Continue with form submission if everything is valid
+    if (upd == null) {
+      axios
+        .post("http://localhost:5000/subtype/add", newSubType)
+        .then(() => alert("You posted a link"))
+        .catch((err) => alert(err));
     } else {
       if (upd == null) {
         axios
-          .post("http://localhost:5000/subtype/add", newSubType)
+          .post("https://localhost:5000/subtype/add", newSubType, {
+            headers: headers,
+          })
           .then(() => alert("You posted a link"))
           .catch((err) => alert(err));
         console.log(newSubType);
       } else {
         axios
-          .put(`http://localhost:5000/subtype/update/${upd._id}`, newSubType)
+          .put(`https://localhost:5000/subtype/update/${upd._id}`, newSubType, {
+            headers: headers,
+          })
           .then(() => alert("Link is Updated"))
           .catch((err) => alert(err));
       }
     }
     setvalidated(true);
   };
+  
+  const linkNameRef = useRef(null);
 
   return (
     <div
@@ -75,13 +96,18 @@ const SubTypes = ({ upd }) => {
             <Form noValidate validated={validated}>
               <Form.Group className="mb-3">
                 <Form.Label>Submission Link Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter name"
-                  value={LinkName}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                />
+                
+
+<Form.Control
+  ref={linkNameRef}
+  type="text"
+  placeholder="Enter name"
+  pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
+  value={LinkName}
+  onChange={(e) => setName(e.target.value)}
+  required
+/>
+
                 <Form.Control.Feedback type="invalid">
                   Enter Name
                 </Form.Control.Feedback>
@@ -139,9 +165,13 @@ const SubTypes = ({ upd }) => {
           </Modal.Body>
 
           <Modal.Footer>
-            <Button variant="primary" onClick={onSubmit}>
+            {/* <Button variant="primary" onClick={onSubmit}>
               {upd != null ? "Done" : "Submit"}
-            </Button>
+            </Button> */}
+            <Button variant="primary" onClick={onSubmit} disabled={!LinkName || !SubmissionType || !date || !Time}>
+  {upd != null ? "Done" : "Submit"}
+</Button>
+
           </Modal.Footer>
         </Modal.Dialog>
       </div>

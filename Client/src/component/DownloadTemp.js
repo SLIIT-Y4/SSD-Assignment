@@ -7,6 +7,7 @@ import "./UploadDoc";
 import Table from "react-bootstrap/Table";
 import StudentSideNavBar from "./StudentSideNavBar";
 import Button from "react-bootstrap/Button";
+import { headers } from "./ApiHeader";
 
 const DownloadTemp = () => {
   const [temps, setTemps] = useState([]);
@@ -14,7 +15,9 @@ const DownloadTemp = () => {
   useEffect(() => {
     const getAllUpDocs = () => {
       axios
-        .get("http://localhost:5000/uploadDoc")
+        .get("https://localhost:5000/uploadDoc", {
+          headers: headers,
+        })
         .then((res) => {
           setTemps(res.data);
         })

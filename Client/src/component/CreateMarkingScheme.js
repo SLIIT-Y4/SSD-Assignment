@@ -7,6 +7,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import { headers } from "./ApiHeader";
 
 const CreateMarkingScheme = () => {
   const [validated, setValidated] = useState(false);
@@ -56,8 +57,11 @@ const CreateMarkingScheme = () => {
       if (type === "Document Evaluation") {
         axios
           .post(
-            "http://localhost:5000/documentmarking/create",
-            newMarkingScheme
+            "https://localhost:5000/documentmarking/create",
+            newMarkingScheme,
+            {
+              headers: headers,
+            }
           )
           .then(
             () =>
@@ -68,8 +72,11 @@ const CreateMarkingScheme = () => {
       } else {
         axios
           .post(
-            "http://localhost:5000/presentationmarking/create",
-            newMarkingScheme
+            "https://localhost:5000/presentationmarking/create",
+            newMarkingScheme,
+            {
+              headers: headers,
+            }
           )
           .then(
             () =>
@@ -105,7 +112,7 @@ const CreateMarkingScheme = () => {
             marginRight: "365px",
             backgroundColor: "whitesmoke",
             padding: "15px",
-            borderRadius:"10px"
+            borderRadius: "10px",
           }}
         >
           <center>
@@ -161,6 +168,7 @@ const CreateMarkingScheme = () => {
               <Col xs={9}>
                 <Form.Control
                   placeholder="Criteria"
+                  pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
                   value={criteria1}
                   onChange={(e) => setCriteria1(e.target.value)}
                   required
@@ -180,6 +188,7 @@ const CreateMarkingScheme = () => {
               <Col xs={9}>
                 <Form.Control
                   placeholder="Criteria"
+                  pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
                   value={criteria2}
                   onChange={(e) => setCriteria2(e.target.value)}
                 />
@@ -197,6 +206,7 @@ const CreateMarkingScheme = () => {
               <Col xs={9}>
                 <Form.Control
                   placeholder="Criteria"
+                  pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
                   value={criteria3}
                   onChange={(e) => setCriteria3(e.target.value)}
                 />
@@ -214,6 +224,7 @@ const CreateMarkingScheme = () => {
               <Col xs={9}>
                 <Form.Control
                   placeholder="Criteria"
+                  pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
                   value={criteria4}
                   onChange={(e) => setCriteria4(e.target.value)}
                 />
@@ -231,6 +242,7 @@ const CreateMarkingScheme = () => {
               <Col xs={9}>
                 <Form.Control
                   placeholder="Criteria"
+                  pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
                   value={criteria5}
                   onChange={(e) => setCriteria5(e.target.value)}
                 />
@@ -248,6 +260,7 @@ const CreateMarkingScheme = () => {
               <Col xs={9}>
                 <Form.Control
                   placeholder="Criteria"
+                  pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
                   value={criteria6}
                   onChange={(e) => setCriteria6(e.target.value)}
                 />
@@ -265,6 +278,7 @@ const CreateMarkingScheme = () => {
               <Col xs={9}>
                 <Form.Control
                   placeholder="Criteria"
+                  pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
                   value={criteria7}
                   onChange={(e) => setCriteria7(e.target.value)}
                 />
