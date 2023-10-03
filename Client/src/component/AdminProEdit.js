@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
+import { headers } from "./ApiHeader";
 
 const StudentProEdit = ({ det }) => {
   const [validated, setvalidated] = useState(false);
@@ -27,7 +28,9 @@ const StudentProEdit = ({ det }) => {
       event.stopPropagation();
     } else {
       axios
-        .put(`http://localhost:5000/admin/update/${det._id}`, updateStudent)
+        .put(`https://localhost:5000/admin/update/${det._id}`, updateStudent, {
+          headers: headers,
+        })
         .then(
           (data) => console.log(data),
           swal("Updated!", "Successfully Updated", "success")
@@ -53,6 +56,8 @@ const StudentProEdit = ({ det }) => {
         <Form.Group className="inputreg" controlId="fname">
           <Form.Label>First Name</Form.Label>
           <Form.Control
+          placeholder="You can only type maximum 5 words."
+          pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
             value={fname}
             onChange={(e) => setFirstName(e.target.value)}
             required
@@ -62,6 +67,8 @@ const StudentProEdit = ({ det }) => {
         <Form.Group className="inputreg" controlId="lname">
           <Form.Label>Last Name</Form.Label>
           <Form.Control
+          placeholder="You can only type maximum 5 words."
+          pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
             value={lname}
             onChange={(e) => setLastName(e.target.value)}
             required
@@ -71,6 +78,7 @@ const StudentProEdit = ({ det }) => {
         <Form.Group className="inputreg" controlId="contactno">
           <Form.Label>Contact No.</Form.Label>
           <Form.Control
+            placeholder="Format: 0123456789"
             pattern="[0-9]{10}"
             value={contactno}
             onChange={(e) => setContactNo(e.target.value)}
@@ -84,7 +92,8 @@ const StudentProEdit = ({ det }) => {
         <Form.Group className="inputreg" controlId="nic">
           <Form.Label>NIC</Form.Label>
           <Form.Control
-            pattern="^([0-9]{9}[x|X|v|V]|[0-9]{12})$"
+            placeholder="Format: 123456789V/v/X/x or 123456789564"
+            pattern="^([0-9]{9}[xXvV]|[0-9]{12})$"
             value={nic}
             onChange={(e) => setNIC(e.target.value)}
             required

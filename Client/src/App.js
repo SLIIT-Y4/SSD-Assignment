@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./component/Home";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import SubTypes from "./component/SubTypes";
 import SubDoc from "./component/SubDoc";
 import UploadDoc from "./component/UploadDoc";
@@ -37,51 +37,95 @@ import EvaluatePresentation from "./component/EvaluatePresentation";
 import CreateMarkingScheme from "./component/CreateMarkingScheme";
 import ResearchGroupsStudents from "./component/ResearchGroupsStudents";
 
-function App(){
-return(
+function App() {
+  return (
     <div>
-        <BrowserRouter>
+      <BrowserRouter>
         <Routes>
-            <Route path="/" exact element={<Home />} />
-            <Route path="/creategroups" exact element={<CreateStudentGroups />} />
-            <Route path="/viewgroups" exact element={<ResearchGroups />}/>
-            <Route path="/registertopic" exact element={<RegisterResearchTopic />} />
-            <Route path="/viewtopics" exact element={<AcceptRejectTopic />} />
-            <Route path="/studenttopicapproval" exact element={<TopicApprovalStudent />} />
-            <Route path="/chat" exact element={<RRChat />} />
-            <Route path="/about" exact element={<About />} /> 
-            <Route path="/createchanel" exact element={<CreateChatChannel />} />
-            <Route path="/evaluatedocument" exact element={<EvaluateDocument />} />
-            <Route path="/evaluatepresentation" exact element={<EvaluatePresentation />} />
-            <Route path="/createmarking" exact element={<CreateMarkingScheme/>}/>
-            <Route path="/Userlogin" exact element={<UserLogin/>}/>
-            <Route path="/Studentreg" exact element={<StudentReg/>}/>
-            <Route path="/Staffreg" exact element={<StaffReg/>}/>
-            <Route path="/Usercard" exact element={<UserCard/>}/>
-            <Route path="/Userprofile" exact element={<UserProfile />} />
-            <Route path="/Adminstudentview" exact element={<AdminStudentView/>}/>
-            <Route path="/Adminstaffview" exact element={<AdminStaffView/>}/>
-            <Route path="/Studentstaffview" exact element={<StudentStaffView/>}/>
-            <Route path="/requestsup" exact element={<RequestSup />}/>
-            <Route path="/requestcosup" exact element={<RequestCoSup />}/>
-            <Route path="/supstaff" exact element={<SupRequestsStaffView />}/>
-            <Route path="/supstudent" exact element={<SupRequestsStudentView />}/>
-            <Route path="/cosupstaff" exact element={<CoSupRequestsStaffView />}/>
-            <Route path="/cosupstudent" exact element={<CoSupRequestsStudentView />}/>
-            <Route path="/subtypes" exact element={<SubTypes/>} />
-            <Route path="/subtypes/:id" exact element={<SubDoc/>} />
-            <Route path="/subdoc" exact element={<SubDoc/>} />
-            <Route path="/uploaddoc" exact element={<UploadDoc/>} />
-            <Route path="/uploadtemp" exact element={<UploadTemp/>} />
-            <Route path="/downloadtemp" exact element={<DownloadTemp/>} />
-            <Route path="/studentsub" exact element={<StudentSub/>} />    
-            <Route path="/sublinks" exact element={<SubLinks/>} />
-            <Route path="/downloadtemp" exact element={<DownloadTemp/>} />    
-            <Route path="/viewgroupsstd" exact element={<ResearchGroupsStudents/>} />  
+          <Route path="/" exact element={<Home />} />
+          <Route path="/creategroups" exact element={<CreateStudentGroups />} />
+          <Route path="/viewgroups" exact element={<ResearchGroups />} />
+          <Route
+            path="/registertopic"
+            exact
+            element={<RegisterResearchTopic />}
+          />
+          <Route path="/viewtopics" exact element={<AcceptRejectTopic />} />
+          <Route
+            path="/studenttopicapproval"
+            exact
+            element={<TopicApprovalStudent />}
+          />
+          <Route path="/chat" exact element={<RRChat />} />
+          <Route path="/about" exact element={<About />} />
+          <Route path="/createchanel" exact element={<CreateChatChannel />} />
+          <Route
+            path="/evaluatedocument"
+            exact
+            element={<EvaluateDocument />}
+          />
+          <Route
+            path="/evaluatepresentation"
+            exact
+            element={<EvaluatePresentation />}
+          />
+          <Route
+            path="/createmarking"
+            exact
+            element={<CreateMarkingScheme />}
+          />
+          <Route path="/Userlogin" exact element={<UserLogin />} />
+          <Route path="/Studentreg" exact element={<StudentReg />} />
+          <Route path="/Staffreg" exact element={<StaffReg />} />
+          <Route path="/Usercard" exact element={<UserCard />} />
+          <Route path="/Userprofile" exact element={<UserProfile />} />
+          <Route
+            path="/Adminstudentview"
+            exact
+            element={<AdminStudentView />}
+          />
+          <Route path="/Adminstaffview" exact element={<AdminStaffView />} />
+          <Route
+            path="/Studentstaffview"
+            exact
+            element={<StudentStaffView />}
+          />
+          <Route path="/requestsup" exact element={<RequestSup />} />
+          <Route path="/requestcosup" exact element={<RequestCoSup />} />
+          <Route path="/supstaff" exact element={<SupRequestsStaffView />} />
+          <Route
+            path="/supstudent"
+            exact
+            element={<SupRequestsStudentView />}
+          />
+          <Route
+            path="/cosupstaff"
+            exact
+            element={<CoSupRequestsStaffView />}
+          />
+          <Route
+            path="/cosupstudent"
+            exact
+            element={<CoSupRequestsStudentView />}
+          />
+          <Route path="/subtypes" exact element={<SubTypes />} />
+          <Route path="/subtypes/:id" exact element={<SubDoc />} />
+          <Route path="/subdoc" exact element={<SubDoc />} />
+          <Route path="/uploaddoc" exact element={<UploadDoc />} />
+          <Route path="/uploadtemp" exact element={<UploadTemp />} />
+          <Route path="/downloadtemp" exact element={<DownloadTemp />} />
+          <Route path="/studentsub" exact element={<StudentSub />} />
+          <Route path="/sublinks" exact element={<SubLinks />} />
+          <Route path="/downloadtemp" exact element={<DownloadTemp />} />
+          <Route
+            path="/viewgroupsstd"
+            exact
+            element={<ResearchGroupsStudents />}
+          />
         </Routes>
       </BrowserRouter>
     </div>
-)
+  );
 }
 
 export default App;

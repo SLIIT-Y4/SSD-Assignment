@@ -1,18 +1,27 @@
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 
+const bucketURL = process.env.REACT_APP_BUCKET_URL;
+const apiKey = process.env.REACT_APP_API_KEY;
+const authDomain = process.env.REACT_APP_AUTH_DOMAIN;
+const projectId = process.env.REACT_APP_PROJECT_ID;
+const storageBucket = process.env.REACT_APP_STORAGE_BUCKET;
+const messagingSenderId = process.env.REACT_APP_MESSAGING_SENDER_ID;
+const appId = process.env.REACT_APP_APP_ID;
+const streamAPIId = process.env.REACT_APP_STREAM_API_KEY;
+
 const firebaseConfig = {
-  apiKey: "AIzaSyAPoQbIsMyt6a_6qPNw3IaNn4xXE7OcUgc",
-  authDomain: "researchprojectmanagementtool.firebaseapp.com",
-  projectId: "researchprojectmanagementtool",
-  storageBucket: "researchprojectmanagementtool.appspot.com",
-  messagingSenderId: "1036144485927",
-  appId: "1:1036144485927:web:d8145426038bdb9b30d002",
+  apiKey,
+  authDomain,
+  projectId,
+  storageBucket,
+  messagingSenderId,
+  appId,
 };
 
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(
   app,
-  "gs://researchprojectmanagementtool.appspot.com"
+  bucketURL
 );
 export default storage;

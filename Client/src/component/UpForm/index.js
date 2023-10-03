@@ -6,6 +6,7 @@ import swal from "sweetalert";
 import { useNavigate } from "react-router";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { headers } from "../ApiHeader";
 
 const UpForm = () => {
   const navigate = useNavigate();
@@ -26,8 +27,10 @@ const UpForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:5000/uploadDoc";
-      const { data: res } = await axios.post(url, data);
+      const url = "https://localhost:5000/uploadDoc";
+      const { data: res } = await axios.post(url, data, {
+        headers: headers,
+      });
       swal("Success!", "uploaded Successfully!", "success"),
         navigate("/uploadtemp");
       console.log(res);

@@ -6,6 +6,7 @@ import axios from "axios";
 import React from "react";
 import swal from "sweetalert";
 import StudentSideNavBar from "./StudentSideNavBar";
+import { headers } from "./ApiHeader";
 
 const RequestCoSup = () => {
   const [validated, setvalidated] = useState(false);
@@ -29,7 +30,9 @@ const RequestCoSup = () => {
       event.stopPropagation();
     } else {
       axios
-        .post("http://localhost:5000/cosup/request", newCoSupRequest)
+        .post("https://localhost:5000/cosup/request", newCoSupRequest, {
+          headers: headers,
+        })
         .then(() => swal("Success!", "Request Sent Successfully!", "success"))
         .catch((err) => swal("Failed!", "Something Went Wrong!", "error"));
     }
@@ -54,7 +57,8 @@ const RequestCoSup = () => {
           <Form.Group className="mb-3" controlId="gid">
             <Form.Label>Group ID</Form.Label>
             <Form.Control
-              placeholder="Group ID"
+              placeholder="Format: SD1234"
+              pattern="[A-Z]{2}\d{4}"
               value={gid}
               onChange={(e) => setGroupId(e.target.value)}
               required
@@ -64,7 +68,8 @@ const RequestCoSup = () => {
           <Form.Group className="mb-3" controlId="gname">
             <Form.Label>Group Name</Form.Label>
             <Form.Control
-              placeholder="Group Name"
+              placeholder="Maximum 5 words."
+              pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
               value={gname}
               onChange={(e) => setGroupName(e.target.value)}
               required
@@ -75,6 +80,7 @@ const RequestCoSup = () => {
             <Form.Label>Co-Supervisor Name</Form.Label>
             <Form.Control
               placeholder="Co-Supervisor Name"
+              pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
               value={cosupname}
               onChange={(e) => setCoSupName(e.target.value)}
               required
@@ -85,6 +91,7 @@ const RequestCoSup = () => {
             <Form.Label>Research Field</Form.Label>
             <Form.Control
               placeholder="Research Field"
+              pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,10}$"
               value={field}
               onChange={(e) => setResearchField(e.target.value)}
               required
