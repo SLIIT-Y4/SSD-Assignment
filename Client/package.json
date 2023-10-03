@@ -9,6 +9,7 @@
   },
   "keywords": [],
   "author": "",
+  "engines":{ "node": "18.17.0"},
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.17.9",

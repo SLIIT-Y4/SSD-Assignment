@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines":{ "node": "18.17.0"},
   "dependencies": {
     "abortcontroller-polyfill": "^1.7.3",
     "acorn": "^8.7.1",
