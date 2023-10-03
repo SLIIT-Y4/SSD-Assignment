@@ -25,7 +25,7 @@ const RRChat = () => {
   const sort = { last_message_at: -1 };
   const options = { limit: 10 };
 
-  const apiKey = "6atn2yf229tr";
+  const apiKey = process.env.REACT_APP_STREAM_API_KEY;
 
   const user = {
     id: token.iD,
