@@ -16,7 +16,7 @@ const SubDoc = () => {
   useEffect(() => {
     const getAllSubTypes = () => {
       axios
-        .get(`http://localhost:5000/subtype/${params.id}`, {
+        .get(`https://localhost:5000/subtype/${params.id}`, {
           headers: headers,
         })
         .then((res) => {

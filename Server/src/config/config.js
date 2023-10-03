@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
-const URI =
-  "mongodb+srv://dishan:Dishan1999@research-project-manage.wg6ln.mongodb.net/Research_Project_Management_Tool?retryWrites=true&w=majority";
+const URI = process.env.DATABASE;
 
 const connectDB = async () => {
   await mongoose.connect(URI);

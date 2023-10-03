@@ -27,7 +27,7 @@ const UserProfile = () => {
   useEffect(() => {
     if (token.type == "Student") {
       axios
-        .get(`http://localhost:5000/student/students/${token.email}`, {
+        .get(`https://localhost:5000/student/students/${token.email}`, {
           headers: headers,
         })
         .then((res) => {
@@ -39,7 +39,7 @@ const UserProfile = () => {
         });
     } else if (token.type == "Admin") {
       axios
-        .get(`http://localhost:5000/Admin/admins/${token.email}`, {
+        .get(`https://localhost:5000/Admin/admins/${token.email}`, {
           headers: headers,
         })
         .then((res) => {
@@ -51,7 +51,7 @@ const UserProfile = () => {
         });
     } else {
       axios
-        .get(`http://localhost:5000/staff/staffs/${token.email}`, {
+        .get(`https://localhost:5000/staff/staffs/${token.email}`, {
           headers: headers,
         })
         .then((res) => {

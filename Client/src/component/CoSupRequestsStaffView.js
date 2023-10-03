@@ -14,7 +14,7 @@ const CoSupRequestsStaffView = () => {
   useEffect(() => {
     const getCoSupervisors = () => {
       axios
-        .get("http://localhost:5000/cosup", {
+        .get("https://localhost:5000/cosup", {
           headers: headers,
         })
         .then((res) => {
@@ -34,7 +34,7 @@ const CoSupRequestsStaffView = () => {
       };
 
       axios
-        .put(`http://localhost:5000/cosup/update/${id}`, updateStatus, {
+        .put(`https://localhost:5000/cosup/update/${id}`, updateStatus, {
           headers: headers,
         })
         .then(() => navigate("/cosupstaff"))
@@ -45,7 +45,7 @@ const CoSupRequestsStaffView = () => {
       };
 
       axios
-        .put(`http://localhost:5000/cosup/update/${id}`, updateStatus, {
+        .put(`https://localhost:5000/cosup/update/${id}`, updateStatus, {
           headers: headers,
         })
         .then(() => navigate("/cosupstaff"))
@@ -56,7 +56,7 @@ const CoSupRequestsStaffView = () => {
       };
 
       axios
-        .put(`http://localhost:5000/cosup/update/${id}`, updateStatus, {
+        .put(`https://localhost:5000/cosup/update/${id}`, updateStatus, {
           headers: headers,
         })
         .then(() => navigate("/cosupstaff"))

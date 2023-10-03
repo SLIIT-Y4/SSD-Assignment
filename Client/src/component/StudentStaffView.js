@@ -13,7 +13,7 @@ const AdminStudentView = () => {
   useEffect(() => {
     const getAdminStudentViews = () => {
       axios
-        .get("http://localhost:5000/staff", {
+        .get("https://localhost:5000/staff", {
           headers: headers,
         })
         .then((res) => {

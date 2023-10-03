@@ -12,7 +12,7 @@ const CoSupRequestsStudentView = () => {
   useEffect(() => {
     const getCoSupervisors = () => {
       axios
-        .get("http://localhost:5000/cosup", {
+        .get("https://localhost:5000/cosup", {
           headers: headers,
         })
         .then((res) => {

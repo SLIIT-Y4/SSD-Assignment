@@ -12,7 +12,7 @@ const SupRequestsStudentView = () => {
   useEffect(() => {
     const getSupervisors = () => {
       axios
-        .get("http://localhost:5000/sup", {
+        .get("https://localhost:5000/sup", {
           headers: headers,
         })
         .then((res) => {

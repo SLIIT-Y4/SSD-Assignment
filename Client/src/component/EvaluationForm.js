@@ -71,7 +71,7 @@ const EvaluationForm = (props) => {
       event.stopPropagation();
     } else {
       axios
-        .post("http://localhost:5000/evaluation/evaluate", newEvaluation, {
+        .post("https://localhost:5000/evaluation/evaluate", newEvaluation, {
           headers: headers,
         })
         .then(() =>
@@ -115,7 +115,8 @@ const EvaluationForm = (props) => {
           <Col>
             <Form.Label>Group ID</Form.Label>
             <Form.Control
-              placeholder="Group ID"
+              placeholder="Format: SD1234"
+              pattern="[A-Z]{2}\d{4}"
               value={gid}
               onChange={(e) => setGID(e.target.value)}
               required

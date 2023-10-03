@@ -32,7 +32,7 @@ const StaffProEdit = ({ det }) => {
       event.stopPropagation();
     } else {
       axios
-        .put(`http://localhost:5000/staff/update/${det._id}`, updateUser, {
+        .put(`https://localhost:5000/staff/update/${det._id}`, updateUser, {
           headers: headers,
         })
         .then(
@@ -50,7 +50,8 @@ const StaffProEdit = ({ det }) => {
         <Form.Group className="inputreg" controlId="iD">
           <Form.Label>Staff ID</Form.Label>
           <Form.Control
-            placeholder="Enter your staff ID"
+            placeholder="Format: STFC123456"
+            pattern="STF(C|B|E|H|SA|GSR|SR)\d{6}"
             value={ids}
             onChange={(e) => setId(e.target.value)}
             required
@@ -60,6 +61,8 @@ const StaffProEdit = ({ det }) => {
         <Form.Group className="inputreg" controlId="fname">
           <Form.Label>First Name</Form.Label>
           <Form.Control
+          placeholder="You can only type maximum 5 words."
+          pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
             value={fname}
             onChange={(e) => setFirstName(e.target.value)}
             required
@@ -69,6 +72,8 @@ const StaffProEdit = ({ det }) => {
         <Form.Group className="inputreg" controlId="lname">
           <Form.Label>Last Name</Form.Label>
           <Form.Control
+          placeholder="You can only type maximum 5 words."
+          pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,5}$"
             value={lname}
             onChange={(e) => setLastName(e.target.value)}
             required
@@ -78,6 +83,7 @@ const StaffProEdit = ({ det }) => {
         <Form.Group className="inputreg" controlId="contactno">
           <Form.Label>Contact No.</Form.Label>
           <Form.Control
+            placeholder="Format: 0123456789"
             pattern="[0-9]{10}"
             value={contactno}
             onChange={(e) => setContactNo(e.target.value)}
@@ -91,7 +97,8 @@ const StaffProEdit = ({ det }) => {
         <Form.Group className="inputreg" controlId="nic">
           <Form.Label>NIC</Form.Label>
           <Form.Control
-            pattern="^([0-9]{9}[x|X|v|V]|[0-9]{12})$"
+            placeholder="Format: 123456789V/v/X/x or 123456789564"
+            pattern="^([0-9]{9}[xXvV]|[0-9]{12})$"
             value={nic}
             onChange={(e) => setNIC(e.target.value)}
             required
@@ -104,8 +111,8 @@ const StaffProEdit = ({ det }) => {
         <Form.Group className="inputreg" controlId="interest">
           <Form.Label>Research Interest</Form.Label>
           <Form.Control
-            as="textarea"
-            placeholder="Enter your research interest"
+            placeholder="Please enter your interested resarch field. ex:Machine learning, Mobile app development etc..."
+            pattern="^(?:\s*\b[A-Za-z]+\b\s*){0,10}$"
             value={interest}
             onChange={(e) => setInterest(e.target.value)}
             required

@@ -17,6 +17,10 @@ const LoginSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  isLocked: {
+    type: Boolean,
+    default: false,
+}
 });
 
 const Login = mongoose.model("login", LoginSchema);

@@ -17,7 +17,7 @@ const CreateChatChannel = () => {
   const token = JSON.parse(sessionStorage.getItem("token"));
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
-  const apiKey = "6atn2yf229tr";
+  const apiKey = process.env.REACT_APP_STREAM_API_KEY;
 
   const ChatUser = {
     id: token.iD,
